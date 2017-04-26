@@ -82,7 +82,7 @@ public class IEReadyStateTest implements SauceOnDemandSessionIdProvider {
         LinkedList browsers = new LinkedList();
         // browsers.add(new String[]{"Windows 8.1", "11", "internet explorer"});
         browsers.add(new String[]{"Windows 7", "11", "internet explorer"});
-        browsers.add(new String[]{"Windows 7", "10", "internet explorer"});
+        //browsers.add(new String[]{"Windows 7", "10", "internet explorer"});
         return browsers;
     }
 
@@ -103,8 +103,8 @@ public class IEReadyStateTest implements SauceOnDemandSessionIdProvider {
             capabilities.setCapability(CapabilityType.VERSION, version);
         }
         capabilities.setCapability(CapabilityType.PLATFORM, os);
-        capabilities.setCapability(CapabilityType.PAGE_LOADING_STRATEGY, "eager");
-        capabilities.setCapability("seleniumVersion", "2.47.1");
+        //capabilities.setCapability(CapabilityType.PAGE_LOADING_STRATEGY, "eager");
+        //capabilities.setCapability("seleniumVersion", "2.47.1");
         capabilities.setCapability("name", "IE Ready State Test");
         this.driver = new RemoteWebDriver(
                 new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),

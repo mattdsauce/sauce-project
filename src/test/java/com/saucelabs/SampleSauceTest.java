@@ -2,12 +2,16 @@ package com.saucelabs;
 
 import com.saucelabs.common.SauceOnDemandAuthentication;
 import com.saucelabs.common.SauceOnDemandSessionIdProvider;
+import org.json.simple.JSONObject;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -15,9 +19,12 @@ import com.saucelabs.junit.ConcurrentParameterized;
 import com.saucelabs.junit.SauceOnDemandTestWatcher;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.LinkedList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(ConcurrentParameterized.class)
 public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
@@ -26,8 +33,8 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
      * Constructs a {@link SauceOnDemandAuthentication} instance using the supplied user name/access key.  To use the authentication
      * supplied by environment variables or from an external file, use the no-arg {@link SauceOnDemandAuthentication} constructor.
      */
-    public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(System.getenv("SAUCE_USERNAME"),
-            System.getenv("SAUCE_ACCESS_KEY"));
+    public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(System.getenv("SAUCE_USERNAME"), System.getenv("SAUCE_ACCESS_KEY"));
+    //public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication("mattdsauce-sub2", "cc17f8ee-bb85-44cd-be25-413721dcaee1");
 
     /**
      * JUnit Rule which will mark the Sauce Job as passed/failed when the test succeeds or fails.
@@ -57,6 +64,8 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
      */
     private WebDriver driver;
 
+    private SimpleDateFormat time_formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+
     /**
      * Constructs a new instance of the test.  The constructor requires three string parameters, which represent the operating
      * system, version and browser to be used when launching a Sauce VM.  The order of the parameters should be the same
@@ -79,7 +88,16 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
     @ConcurrentParameterized.Parameters
     public static LinkedList browsersStrings() {
         LinkedList browsers = new LinkedList();
-        browsers.add(new String[]{"Windows 8.1", "11", "internet explorer"});
+        //browsers.add(new String[]{"macOS 10.12", "latest", "firefox"});
+        //browsers.add(new String[]{"Windows 10", "11", "internet explorer"});
+        //browsers.add(new String[]{"Windows 10", "14", "MicrosoftEdge"});
+        //browsers.add(new String[]{"Windows 10", "50", "firefox"});
+        //browsers.add(new String[]{"windows 7", "55", "chrome"});
+        browsers.add(new String[]{"windows 8.1", "latest", "chrome"});
+        //browsers.add(new String[]{"windows 8.1", "56", "chrome"});
+        //browsers.add(new String[]{"windows 8.1", "55", "chrome"});
+        //browsers.add(new String[]{"linux", "latest", "firefox"});
+        //browsers.add(new String[]{"macOS 10.12", "10.0", "safari"});
         return browsers;
     }
 
@@ -100,10 +118,25 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
             capabilities.setCapability(CapabilityType.VERSION, version);
         }
         capabilities.setCapability(CapabilityType.PLATFORM, os);
-        capabilities.setCapability("name", "Sauce Sample Test");
+        //capabilities.setCapability("javascriptEnabled",true);
+        //capabilities.setCapability("tunnelIdentifier", "mattTunnel");
+        capabilities.setCapability("seleniumVersion", "3.3.1");
+        //capabilities.setCapability("iedriverVersion", "3.3.0");
+        capabilities.setCapability("chromedriverVersion", "2.29");
+        //capabilities.setCapability("captureHtml",true);
+        //capabilities.setCapability("marionette", false);
+        //capabilities.setCapability("avoidProxy", true);
+        //capabilities.setCapability("unexpectedAlertBehaviour", "ignore");
+        //capabilities.setCapability("timeZone", "London");
+        //capabilities.setCapability("public", "private");
+        capabilities.setCapability("name", "Sauce Sample Test: " + browser + " " + version + ", " + os);
+        //capabilities.setCapability("build", "testBuild");
+        //System.out.println("Before creating RemoteWebDriver: " + time_formatter.format(System.currentTimeMillis()));
         this.driver = new RemoteWebDriver(
                 new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),
+                //new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@localhost:4445/wd/hub"),
                 capabilities);
+        //System.out.println("After creating RemoteWebDriver: " + time_formatter.format(System.currentTimeMillis()));
         this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
 
     }
@@ -113,9 +146,22 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
      * @throws Exception
      */
     @Test
-    public void amazon() throws Exception {
-        driver.get("http://www.amazon.com/");
-        assertEquals("Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more", driver.getTitle());
+    public void loadpage() throws Exception {
+        //System.out.println("Before driver.get: " + time_formatter.format(System.currentTimeMillis()));
+        driver.get("https://amazon.com");
+        //driver.get("http://localhost:8080/examples/servlets/servlet/HelloWorldExample");
+
+        //System.out.println("After driver.get: " + time_formatter.format(System.currentTimeMillis()));
+
+        List<WebElement> anchors = driver.findElements(By.tagName("a"));
+        for (WebElement anchor: anchors) {
+            System.out.println("anchor: " + anchor.getAttribute("outerHTML"));
+        }
+
+        Thread.sleep(2000);
+
+        assertTrue(driver.getTitle().startsWith("Amazon"));
+        //assertTrue(driver.getTitle().startsWith("Hello"));
     }
 
     /**
@@ -125,6 +171,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
      */
     @After
     public void tearDown() throws Exception {
+        //System.out.println("Before driver.quit: " + time_formatter.format(System.currentTimeMillis()));
         driver.quit();
     }
 

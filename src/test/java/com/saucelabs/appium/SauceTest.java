@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.json.JSONObject;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -71,8 +72,14 @@ public class SauceTest implements SauceOnDemandSessionIdProvider {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "iOS");
         capabilities.setCapability("platformVersion", "9.0");
-        capabilities.setCapability("deviceName", "iPhone 6");
-        capabilities.setCapability("appiumVersion", "1.4.14");
+        capabilities.setCapability("deviceName", "iPad Simulator");
+        capabilities.setCapability("appiumVersion", "1.5.1");
+
+        JSONObject processargs = new JSONObject();
+        processargs.put("STARTED_WITH_APPIUM", "1");
+        processargs.put("SF_SERVER_URL", "qa11.spredfast.com");
+        capabilities.setCapability("processArguments", processargs.toString());
+
         capabilities.setCapability("name", "Appium SauceTest");
         capabilities.setCapability("app", "https://appium.s3.amazonaws.com/TestApp7.1.app.zip");
 

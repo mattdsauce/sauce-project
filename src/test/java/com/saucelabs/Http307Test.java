@@ -49,11 +49,10 @@ public class Http307Test implements SauceOnDemandSessionIdProvider {
 
         DesiredCapabilities caps = DesiredCapabilities.iphone();
         //caps.setCapability("appiumVersion", "1.4.7");
-        caps.setCapability("deviceName","iPad Simulator");
+        caps.setCapability("deviceName","iPhone Simulator");
         caps.setCapability("deviceOrientation", "portrait");
-        caps.setCapability("platformVersion","9.1");
-        caps.setCapability("platformName", "iOS");
-        caps.setCapability("browserName", "Safari");
+        caps.setCapability("version","6.1");
+        caps.setCapability("platform", "OS X 10.10");
         caps.setCapability("name", "HTTP 307 redirect Test");
         driver = new RemoteWebDriver(
                 new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),

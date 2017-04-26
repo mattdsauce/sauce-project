@@ -61,10 +61,14 @@ public class ChromeExtensionTest implements SauceOnDemandSessionIdProvider {
 
         ChromeOptions options = new ChromeOptions();
         options.addExtensions(new File("./Adblock-Plus_v1.9.3.crx"));
+        options.addArguments("start-maximized", "disable-webgl", "blacklist-webgl", "blacklist-accelerated-compositing",
+                "disable-accelerated-2d-canvas", "disable-accelerated-compositing", "disable-accelerated-layers",
+                "disable-accelerated-plugins", "disable-accelerated-video", "disable-accelerated-video-decode",
+                "disable-gpu", "disable-infobars", "test-type");
         DesiredCapabilities caps = DesiredCapabilities.chrome();
         caps.setCapability(ChromeOptions.CAPABILITY, options);
-        caps.setCapability("platform", "OS X 10.10");
-        caps.setCapability("version", "45.0");
+        caps.setCapability("platform", "Windows 8.1");
+        caps.setCapability("version", "latest");
         caps.setCapability("name", "Chrome Extension Test");
 
         // logging stuff

@@ -1,0 +1,1667 @@
+[17.713][INFO]: COMMAND InitSession {
+   "desiredCapabilities": {
+
+   }
+}
+[17.715][INFO]: Populating Preferences file: {
+   "alternate_error_pages": {
+      "enabled": false
+   },
+   "autofill": {
+      "enabled": false
+   },
+   "browser": {
+      "check_default_browser": false
+   },
+   "distribution": {
+      "import_bookmarks": false,
+      "import_history": false,
+      "import_search_engine": false,
+      "make_chrome_default_for_user": false,
+      "show_welcome_page": false,
+      "skip_first_run_ui": true
+   },
+   "dns_prefetching": {
+      "enabled": false
+   },
+   "profile": {
+      "content_settings": {
+         "pattern_pairs": {
+            "https://*,*": {
+               "media-stream": {
+                  "audio": "Default",
+                  "video": "Default"
+               }
+            }
+         }
+      },
+      "default_content_setting_values": {
+         "geolocation": 1
+      },
+      "default_content_settings": {
+         "geolocation": 1,
+         "mouselock": 1,
+         "notifications": 1,
+         "popups": 1,
+         "ppapi-broker": 1
+      },
+      "password_manager_enabled": false
+   },
+   "safebrowsing": {
+      "enabled": false
+   },
+   "search": {
+      "suggest_enabled": false
+   },
+   "translate": {
+      "enabled": false
+   }
+}
+[17.715][INFO]: Populating Local State file: {
+   "background_mode": {
+      "enabled": false
+   },
+   "ssl": {
+      "rev_checking": {
+         "enabled": false
+      }
+   }
+}
+[17.716][INFO]: Launching chrome: /Applications/Google Chrome.app/Contents/MacOS/Google Chrome --disable-background-networking --disable-client-side-phishing-detection --disable-default-apps --disable-hang-monitor --disable-popup-blocking --disable-prompt-on-repost --disable-sync --disable-web-resources --enable-automation --enable-logging --ignore-certificate-errors --load-component-extension=/var/folders/sb/7hhjsl7s4f7g5n2khh3c_jzh0000gn/T/.org.chromium.Chromium.Oiv9D3/internal --log-level=0 --metrics-recording-only --no-first-run --password-store=basic --remote-debugging-port=12049 --safebrowsing-disable-auto-update --test-type=webdriver --use-mock-keychain --user-data-dir=/var/folders/sb/7hhjsl7s4f7g5n2khh3c_jzh0000gn/T/.org.chromium.Chromium.pPgXVy data:,
+[17.727][DEBUG]: DevTools request: http://localhost:12049/json/version
+[17.729][DEBUG]: DevTools request failed
+[17.780][DEBUG]: DevTools request: http://localhost:12049/json/version
+[17.780][DEBUG]: DevTools request failed
+[17.831][DEBUG]: DevTools request: http://localhost:12049/json/version
+[17.831][DEBUG]: DevTools request failed
+[17.882][DEBUG]: DevTools request: http://localhost:12049/json/version
+[17.883][DEBUG]: DevTools request failed
+[17.933][DEBUG]: DevTools request: http://localhost:12049/json/version
+[17.933][DEBUG]: DevTools request failed
+[17.983][DEBUG]: DevTools request: http://localhost:12049/json/version
+[17.984][DEBUG]: DevTools request failed
+[18.034][DEBUG]: DevTools request: http://localhost:12049/json/version
+[18.034][DEBUG]: DevTools request failed
+[18.085][DEBUG]: DevTools request: http://localhost:12049/json/version
+[18.085][DEBUG]: DevTools request failed
+[18.135][DEBUG]: DevTools request: http://localhost:12049/json/version
+[18.136][DEBUG]: DevTools request failed
+2017-04-20 10:34:45.558 Google Chrome[7427:692808] NSWindow warning: adding an unknown subview: <FullSizeContentView: 0x7fa893c22600>. Break on NSLog to debug.
+2017-04-20 10:34:45.558 Google Chrome[7427:692808] Call stack:
+(
+    "+callStackSymbols disabled for performance reasons"
+)
+[18.187][DEBUG]: DevTools request: http://localhost:12049/json/version
+2017-04-20 10:34:45.620 Google Chrome[7427:692808] Failed to connect (barView_) outlet from (NSTextField) to (BookmarkBarView): missing setter or instance variable
+2017-04-20 10:34:45.621 Google Chrome[7427:692808] Failed to connect (barView_) outlet from (GTMWidthBasedTweaker) to (BookmarkBarView): missing setter or instance variable
+2017-04-20 10:34:45.942 Google Chrome[7427:692808] Errors logged by ksadmin: KSKeyedPersistentStore store directory does not exist. [com.google.UpdateEngine.CommonErrorDomain:501 - '/Library/Google/GoogleSoftwareUpdate/TicketStore' - 'KSKeyedPersistentStore.m:372']
+KSPersistentTicketStore failed to load tickets. (productID: com.google.Chrome) [com.google.UpdateEngine.CoreErrorDomain:1051 - '/Library/Google/GoogleSoftwareUpdate/TicketStore/Keystone.ticketstore'] (KSKeyedPersistentStore store directory does not exist. - '/Library/Google/GoogleSoftwareUpdate/TicketStore' [com.google.UpdateEngine.CommonErrorDomain:501])
+ksadmin cannot access the ticket store:<KSUpdateError:0x103000c40
+	domain="com.google.UpdateEngine.CoreErrorDomain"
+	code=1051
+	userInfo={
+		function = "-[KSProductKeyedStore(ProtectedMethods) errorForStoreError:productID:message:timeoutMessage:]";
+		date = 2017-04-20 09:34:45 +0000;
+		productids = {(
+			"com.google.Chrome"
+		)};
+		filename = "KSProductKeyedStore.m";
+		line = 91;
+		NSFilePath = "/Library/Google/GoogleSoftwareUpdate/TicketStore/Keystone.ticketstore";
+		NSUnderlyingError = <KSError:0x1030003c0
+			domain="com.google.UpdateEngine.CommonErrorDomain"
+			code=501
+			userInfo={
+				date = 2017-04-20 09:34:45 +0000;
+				line = 372;
+				filename = "KSKeyedPersistentStore.m";
+				function = "-[KSKeyedPersistentStore(PrivateMethods) validateStorePath]";
+				NSFilePath = "/Library/Google/GoogleSoftwareUpdate/TicketStore";
+				NSLocalizedDescription = "KSKeyedPersistentStore store directory does not exist.";
+			}
+		>;
+		NSLocalizedDescription = "KSPersistentTicketStore failed to load tickets.";
+	}
+>
+[18.578][DEBUG]: DevTools response: {
+   "Browser": "Chrome/58.0.3029.81",
+   "Protocol-Version": "1.2",
+   "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.81 Safari/537.36",
+   "V8-Version": "5.8.283.32",
+   "WebKit-Version": "537.36 (@ac0bae59f0aa5b391517e132bf172144b1939333)"
+}
+
+[18.578][DEBUG]: DevTools request: http://localhost:12049/json
+[18.617][DEBUG]: DevTools response: [ {
+   "description": "",
+   "devtoolsFrontendUrl": "/devtools/inspector.html?ws=localhost:12049/devtools/page/af93b518-56a2-466f-a6a1-6f2e211a2739",
+   "id": "af93b518-56a2-466f-a6a1-6f2e211a2739",
+   "title": "",
+   "type": "other",
+   "url": "chrome-extension://aapnijgdinlhnhlmodcfapnahmbfebeb/_generated_background_page.html",
+   "webSocketDebuggerUrl": "ws://localhost:12049/devtools/page/af93b518-56a2-466f-a6a1-6f2e211a2739"
+}, {
+   "description": "",
+   "devtoolsFrontendUrl": "/devtools/inspector.html?ws=localhost:12049/devtools/page/d1592a1d-1808-40da-a509-825f0b8993f2",
+   "id": "d1592a1d-1808-40da-a509-825f0b8993f2",
+   "title": "",
+   "type": "page",
+   "url": "data:,",
+   "webSocketDebuggerUrl": "ws://localhost:12049/devtools/page/d1592a1d-1808-40da-a509-825f0b8993f2"
+} ]
+
+[18.617][DEBUG]: DevTools request: http://localhost:12049/json
+[18.642][DEBUG]: DevTools response: [ {
+   "description": "",
+   "devtoolsFrontendUrl": "/devtools/inspector.html?ws=localhost:12049/devtools/page/af93b518-56a2-466f-a6a1-6f2e211a2739",
+   "id": "af93b518-56a2-466f-a6a1-6f2e211a2739",
+   "title": "",
+   "type": "other",
+   "url": "chrome-extension://aapnijgdinlhnhlmodcfapnahmbfebeb/_generated_background_page.html",
+   "webSocketDebuggerUrl": "ws://localhost:12049/devtools/page/af93b518-56a2-466f-a6a1-6f2e211a2739"
+}, {
+   "description": "",
+   "devtoolsFrontendUrl": "/devtools/inspector.html?ws=localhost:12049/devtools/page/d1592a1d-1808-40da-a509-825f0b8993f2",
+   "id": "d1592a1d-1808-40da-a509-825f0b8993f2",
+   "title": "",
+   "type": "page",
+   "url": "data:,",
+   "webSocketDebuggerUrl": "ws://localhost:12049/devtools/page/d1592a1d-1808-40da-a509-825f0b8993f2"
+} ]
+
+[18.644][INFO]: resolved localhost to ["::1","127.0.0.1"]
+[18.649][DEBUG]: DEVTOOLS COMMAND Log.enable (id=1) {
+
+}
+[18.649][DEBUG]: DEVTOOLS COMMAND DOM.getDocument (id=2) {
+
+}
+[18.649][DEBUG]: DEVTOOLS COMMAND Runtime.enable (id=3) {
+
+}
+[18.649][DEBUG]: DEVTOOLS COMMAND Page.enable (id=4) {
+
+}
+[18.649][DEBUG]: DEVTOOLS COMMAND Page.enable (id=5) {
+
+}
+[18.699][DEBUG]: DEVTOOLS RESPONSE Log.enable (id=1) {
+
+}
+[18.712][DEBUG]: DEVTOOLS RESPONSE DOM.getDocument (id=2) {
+   "root": {
+      "backendNodeId": 2,
+      "baseURL": "data:,",
+      "childNodeCount": 1,
+      "children": [ {
+         "attributes": [  ],
+         "backendNodeId": 3,
+         "childNodeCount": 2,
+         "children": [ {
+            "attributes": [  ],
+            "backendNodeId": 4,
+            "childNodeCount": 0,
+            "localName": "head",
+            "nodeId": 3,
+            "nodeName": "HEAD",
+            "nodeType": 1,
+            "nodeValue": "",
+            "parentId": 2
+         }, {
+            "attributes": [  ],
+            "backendNodeId": 5,
+            "childNodeCount": 1,
+            "localName": "body",
+            "nodeId": 4,
+            "nodeName": "BODY",
+            "nodeType": 1,
+            "nodeValue": "",
+            "parentId": 2
+         } ],
+         "frameId": "7434.1",
+         "localName": "html",
+         "nodeId": 2,
+         "nodeName": "HTML",
+         "nodeType": 1,
+         "nodeValue": "",
+         "parentId": 1
+      } ],
+      "documentURL": "data:,",
+      "localName": "",
+      "nodeId": 1,
+      "nodeName": "#document",
+      "nodeType": 9,
+      "nodeValue": "",
+      "xmlVersion": ""
+   }
+}
+[18.734][DEBUG]: DEVTOOLS EVENT Runtime.executionContextCreated {
+   "context": {
+      "auxData": {
+         "frameId": "7434.1",
+         "isDefault": true
+      },
+      "id": 1,
+      "name": "",
+      "origin": "://"
+   }
+}
+[18.734][DEBUG]: DEVTOOLS RESPONSE Runtime.enable (id=3) {
+
+}
+[18.734][DEBUG]: DEVTOOLS RESPONSE Page.enable (id=4) {
+
+}
+[18.734][DEBUG]: DEVTOOLS RESPONSE Page.enable (id=5) {
+
+}
+[18.734][DEBUG]: DEVTOOLS COMMAND Page.enable (id=6) {
+
+}
+[18.741][DEBUG]: DEVTOOLS RESPONSE Page.enable (id=6) {
+
+}
+[18.741][DEBUG]: DEVTOOLS COMMAND Runtime.enable (id=7) {
+
+}
+[18.746][DEBUG]: DEVTOOLS EVENT Page.loadEventFired {
+   "timestamp": 6128.279162
+}
+[18.746][DEBUG]: DEVTOOLS EVENT Page.frameStoppedLoading {
+   "frameId": "7434.1"
+}
+[18.746][DEBUG]: DEVTOOLS EVENT DOM.documentUpdated {
+
+}
+[18.746][DEBUG]: DEVTOOLS COMMAND DOM.getDocument (id=8) {
+
+}
+[18.746][DEBUG]: DEVTOOLS EVENT Page.domContentEventFired {
+   "timestamp": 6128.279714
+}
+[18.746][DEBUG]: DEVTOOLS RESPONSE Runtime.enable (id=7) {
+
+}
+[18.747][DEBUG]: DEVTOOLS RESPONSE DOM.getDocument (id=8) {
+   "root": {
+      "backendNodeId": 2,
+      "baseURL": "data:,",
+      "childNodeCount": 1,
+      "children": [ {
+         "attributes": [  ],
+         "backendNodeId": 3,
+         "childNodeCount": 2,
+         "children": [ {
+            "attributes": [  ],
+            "backendNodeId": 4,
+            "childNodeCount": 0,
+            "localName": "head",
+            "nodeId": 7,
+            "nodeName": "HEAD",
+            "nodeType": 1,
+            "nodeValue": "",
+            "parentId": 6
+         }, {
+            "attributes": [  ],
+            "backendNodeId": 5,
+            "childNodeCount": 1,
+            "localName": "body",
+            "nodeId": 8,
+            "nodeName": "BODY",
+            "nodeType": 1,
+            "nodeValue": "",
+            "parentId": 6
+         } ],
+         "frameId": "7434.1",
+         "localName": "html",
+         "nodeId": 6,
+         "nodeName": "HTML",
+         "nodeType": 1,
+         "nodeValue": "",
+         "parentId": 5
+      } ],
+      "documentURL": "data:,",
+      "localName": "",
+      "nodeId": 5,
+      "nodeName": "#document",
+      "nodeType": 9,
+      "nodeValue": "",
+      "xmlVersion": ""
+   }
+}
+[18.747][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=9) {
+   "expression": "(function() { // Copyright (c) 2012 The Chromium Authors. All rights reserved.\n// Use of this source code is governed by a BSD-style license that can be\n// found in the LICENSE file.\n\n/**\n * Enum f...",
+   "returnByValue": true
+}
+[18.753][DEBUG]: DEVTOOLS EVENT Page.frameResized {
+
+}
+[18.767][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=9) {
+   "result": {
+      "type": "object",
+      "value": {
+         "status": 0,
+         "value": 1
+      }
+   }
+}
+[18.767][INFO]: RESPONSE InitSession {
+   "acceptSslCerts": true,
+   "applicationCacheEnabled": false,
+   "browserConnectionEnabled": false,
+   "browserName": "chrome",
+   "chrome": {
+      "chromedriverVersion": "2.28.455517 (2c6d2707d8ea850c862f04ac066724273981e88f)",
+      "userDataDir": "/var/folders/sb/7hhjsl7s4f7g5n2khh3c_jzh0000gn/T/.org.chromium.Chromium.pPgXVy"
+   },
+   "cssSelectorsEnabled": true,
+   "databaseEnabled": false,
+   "handlesAlerts": true,
+   "hasTouchScreen": false,
+   "javascriptEnabled": true,
+   "locationContextEnabled": true,
+   "mobileEmulationEnabled": false,
+   "nativeEvents": true,
+   "networkConnectionEnabled": false,
+   "pageLoadStrategy": "normal",
+   "platform": "Mac OS X",
+   "rotatable": false,
+   "takesHeapSnapshot": true,
+   "takesScreenshot": true,
+   "~~~": "..."
+}
+[18.789][INFO]: COMMAND Navigate {
+   "url": "https://amazon.com/"
+}
+[18.789][INFO]: Waiting for pending navigations...
+[18.789][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=10) {
+   "expression": "1"
+}
+[18.791][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=10) {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[18.791][INFO]: Done waiting for pending navigations. Status: ok
+[18.791][DEBUG]: DEVTOOLS COMMAND Page.navigate (id=11) {
+   "url": "https://amazon.com/"
+}
+[19.509][DEBUG]: DEVTOOLS EVENT Runtime.executionContextsCleared {
+
+}
+[19.509][DEBUG]: DEVTOOLS RESPONSE Page.navigate (id=11) {
+   "frameId": "7439.1"
+}
+[19.509][INFO]: Waiting for pending navigations...
+[19.510][DEBUG]: DEVTOOLS EVENT Page.frameStartedLoading {
+   "frameId": "7439.1"
+}
+[19.510][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=12) {
+   "expression": "1"
+}
+[19.531][DEBUG]: DEVTOOLS EVENT Runtime.executionContextsCleared {
+
+}
+[19.531][DEBUG]: DEVTOOLS EVENT DOM.documentUpdated {
+
+}
+[19.531][DEBUG]: DEVTOOLS COMMAND DOM.getDocument (id=13) {
+
+}
+[19.538][DEBUG]: DEVTOOLS EVENT Page.frameNavigated {
+   "frame": {
+      "id": "7439.1",
+      "loaderId": "7439.1",
+      "mimeType": "text/html",
+      "securityOrigin": "https://www.amazon.com",
+      "url": "https://www.amazon.com/"
+   }
+}
+[19.538][DEBUG]: DEVTOOLS EVENT Runtime.executionContextCreated {
+   "context": {
+      "auxData": {
+         "frameId": "7439.1",
+         "isDefault": true
+      },
+      "id": 1,
+      "name": "",
+      "origin": "https://www.amazon.com"
+   }
+}
+[19.548][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=12) {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[19.548][DEBUG]: DEVTOOLS RESPONSE DOM.getDocument (id=13) {
+   "root": {
+      "backendNodeId": 2,
+      "baseURL": "https://www.amazon.com/",
+      "childNodeCount": 2,
+      "children": [ {
+         "backendNodeId": 3,
+         "localName": "",
+         "nodeId": 2,
+         "nodeName": "html",
+         "nodeType": 10,
+         "nodeValue": "",
+         "parentId": 1,
+         "publicId": "",
+         "systemId": ""
+      }, {
+         "attributes": [ "class", "a-no-js", "data-19ax5a9jf", "dingo" ],
+         "backendNodeId": 4,
+         "childNodeCount": 2,
+         "children": [ {
+            "backendNodeId": 5,
+            "localName": "",
+            "nodeId": 4,
+            "nodeName": "#comment",
+            "nodeType": 8,
+            "nodeValue": " sp:feature:head-start ",
+            "parentId": 3
+         }, {
+            "attributes": [  ],
+            "backendNodeId": 6,
+            "childNodeCount": 13,
+            "localName": "head",
+            "nodeId": 5,
+            "nodeName": "HEAD",
+            "nodeType": 1,
+            "nodeValue": "",
+            "parentId": 3
+         } ],
+         "frameId": "7439.1",
+         "localName": "html",
+         "nodeId": 3,
+         "nodeName": "HTML",
+         "nodeType": 1,
+         "nodeValue": "",
+         "parentId": 1
+      } ],
+      "documentURL": "https://www.amazon.com/",
+      "localName": "",
+      "nodeId": 1,
+      "nodeName": "#document",
+      "nodeType": 9,
+      "nodeValue": "",
+      "xmlVersion": ""
+   }
+}
+[19.732][DEBUG]: DEVTOOLS EVENT DOM.attributeModified {
+   "name": "class",
+   "nodeId": 3,
+   "value": ""
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.attributeModified {
+   "name": "class",
+   "nodeId": 3,
+   "value": " a-js"
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.attributeModified {
+   "name": "class",
+   "nodeId": 3,
+   "value": " a-js a-audio a-video a-canvas a-svg a-drag-drop a-geolocation a-history a-webworker a-autofocus a-input-placeholder a-textarea-placeholder a-local-storage a-gradients a-hires a-transform3d a-touch..."
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.attributeModified {
+   "name": "data-aui-build-date",
+   "nodeId": 3,
+   "value": "3.17.5.1-2017-04-19"
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 14,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 15,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 16,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 17,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 18,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 19,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 20,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 21,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.attributeModified {
+   "name": "data-useragent",
+   "nodeId": 3,
+   "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.81 Safari/537.36"
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.attributeModified {
+   "name": "data-platform",
+   "nodeId": 3,
+   "value": "MacIntel"
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 22,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 23,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 24,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 25,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 26,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 27,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 28,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 29,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 30,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 31,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 32,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 33,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 34,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 35,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 36,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 37,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 38,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 39,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 40,
+   "nodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeInserted {
+   "node": {
+      "backendNodeId": 7,
+      "localName": "",
+      "nodeId": 6,
+      "nodeName": "#comment",
+      "nodeType": 8,
+      "nodeValue": " sp:feature:start-body "
+   },
+   "parentNodeId": 3,
+   "previousNodeId": 5
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeInserted {
+   "node": {
+      "attributes": [ "class", "a-m-us a-aui_51744-c a-aui_57326-c a-aui_58736-t1 a-aui_72554-c a-aui_83815-c a-aui_86171-c a-aui_96511-c a-aui_accessibility_49860-c a-aui_attr_validations_1_51371-c a-aui_bolt_62845-c a-aui_noope..." ],
+      "backendNodeId": 8,
+      "childNodeCount": 0,
+      "localName": "body",
+      "nodeId": 7,
+      "nodeName": "BODY",
+      "nodeType": 1,
+      "nodeValue": ""
+   },
+   "parentNodeId": 3,
+   "previousNodeId": 6
+}
+[19.733][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 1,
+   "nodeId": 7
+}
+[19.733][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=14) {
+   "expression": "1"
+}
+[19.768][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=14) {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[19.858][DEBUG]: DEVTOOLS EVENT DOM.attributeModified {
+   "name": "class",
+   "nodeId": 3,
+   "value": " a-js a-audio a-video a-canvas a-svg a-drag-drop a-geolocation a-history a-webworker a-autofocus a-input-placeholder a-textarea-placeholder a-local-storage a-gradients a-hires a-transform3d a-touch..."
+}
+[19.858][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=15) {
+   "expression": "1"
+}
+[19.925][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 41,
+   "nodeId": 5
+}
+[19.925][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 42,
+   "nodeId": 5
+}
+[19.925][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 43,
+   "nodeId": 5
+}
+[19.925][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 44,
+   "nodeId": 5
+}
+[19.925][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=15) {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[19.937][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 45,
+   "nodeId": 5
+}
+[19.937][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 46,
+   "nodeId": 5
+}
+[19.937][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=16) {
+   "expression": "1"
+}
+[19.962][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 2,
+   "nodeId": 7
+}
+[19.962][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 3,
+   "nodeId": 7
+}
+[19.962][DEBUG]: DEVTOOLS EVENT DOM.documentUpdated {
+
+}
+[19.962][DEBUG]: DEVTOOLS COMMAND DOM.getDocument (id=17) {
+
+}
+[19.962][DEBUG]: DEVTOOLS EVENT Page.domContentEventFired {
+   "timestamp": 6129.500036
+}
+[19.963][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=16) {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[19.975][DEBUG]: DEVTOOLS RESPONSE DOM.getDocument (id=17) {
+   "root": {
+      "backendNodeId": 2,
+      "baseURL": "https://www.amazon.com/",
+      "childNodeCount": 2,
+      "children": [ {
+         "backendNodeId": 3,
+         "localName": "",
+         "nodeId": 9,
+         "nodeName": "html",
+         "nodeType": 10,
+         "nodeValue": "",
+         "parentId": 8,
+         "publicId": "",
+         "systemId": ""
+      }, {
+         "attributes": [ "class", " a-js a-audio a-video a-canvas a-svg a-drag-drop a-geolocation a-history a-webworker a-autofocus a-input-placeholder a-textarea-placeholder a-local-storage a-gradients a-hires a-transform3d a-touch...", "data-19ax5a9jf", "dingo", "data-aui-build-date", "3.17.5.1-2017-04-19", "data-useragent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.81 Safari/537.36", "data-platform", "MacIntel" ],
+         "backendNodeId": 4,
+         "childNodeCount": 4,
+         "children": [ {
+            "backendNodeId": 5,
+            "localName": "",
+            "nodeId": 11,
+            "nodeName": "#comment",
+            "nodeType": 8,
+            "nodeValue": " sp:feature:head-start ",
+            "parentId": 10
+         }, {
+            "attributes": [  ],
+            "backendNodeId": 6,
+            "childNodeCount": 48,
+            "localName": "head",
+            "nodeId": 12,
+            "nodeName": "HEAD",
+            "nodeType": 1,
+            "nodeValue": "",
+            "parentId": 10
+         }, {
+            "backendNodeId": 7,
+            "localName": "",
+            "nodeId": 13,
+            "nodeName": "#comment",
+            "nodeType": 8,
+            "nodeValue": " sp:feature:start-body ",
+            "parentId": 10
+         }, {
+            "attributes": [ "class", "a-m-us a-aui_51744-c a-aui_57326-c a-aui_58736-t1 a-aui_72554-c a-aui_83815-c a-aui_86171-c a-aui_96511-c a-aui_accessibility_49860-c a-aui_attr_validations_1_51371-c a-aui_bolt_62845-c a-aui_noope..." ],
+            "backendNodeId": 8,
+            "childNodeCount": 3,
+            "localName": "body",
+            "nodeId": 14,
+            "nodeName": "BODY",
+            "nodeType": 1,
+            "nodeValue": "",
+            "parentId": 10
+         } ],
+         "frameId": "7439.1",
+         "localName": "html",
+         "nodeId": 10,
+         "nodeName": "HTML",
+         "nodeType": 1,
+         "nodeValue": "",
+         "parentId": 8
+      } ],
+      "documentURL": "https://www.amazon.com/",
+      "localName": "",
+      "nodeId": 8,
+      "nodeName": "#document",
+      "nodeType": 9,
+      "nodeValue": "",
+      "xmlVersion": ""
+   }
+}
+[19.994][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 4,
+   "nodeId": 14
+}
+[19.994][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 3,
+   "nodeId": 14
+}
+[19.994][DEBUG]: DEVTOOLS EVENT DOM.childNodeInserted {
+   "node": {
+      "attributes": [  ],
+      "backendNodeId": 10,
+      "childNodeCount": 1,
+      "localName": "div",
+      "nodeId": 15,
+      "nodeName": "DIV",
+      "nodeType": 1,
+      "nodeValue": ""
+   },
+   "parentNodeId": 10,
+   "previousNodeId": 0
+}
+[19.994][DEBUG]: DEVTOOLS EVENT DOM.childNodeRemoved {
+   "nodeId": 15,
+   "parentNodeId": 10
+}
+[19.994][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=18) {
+   "expression": "1"
+}
+[19.994][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=18) {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[20.021][DEBUG]: DEVTOOLS EVENT Page.frameAttached {
+   "frameId": "7439.2",
+   "parentFrameId": "7439.1"
+}
+[20.021][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=19) {
+   "expression": "1"
+}
+[20.021][DEBUG]: DEVTOOLS EVENT Page.frameStartedLoading {
+   "frameId": "7439.2"
+}
+[20.023][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=19) {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[20.054][DEBUG]: DEVTOOLS EVENT Page.frameNavigated {
+   "frame": {
+      "id": "7439.2",
+      "loaderId": "7439.2",
+      "mimeType": "text/html",
+      "name": "{\"slot\":\"Gateway_right-2_desktop\",\"slotName\":\"right-2\",\"src\":\"http://aax-us-east-retail-rtb.amazon.com/e/xsp/getAd?slot=right-2&rid=010172e264df936f2c34ed6ea67fb0b4282b3079f860c0b807dfa883be88daa9e...",
+      "parentId": "7439.1",
+      "securityOrigin": "https://images-na.ssl-images-amazon.com",
+      "url": "https://images-na.ssl-images-amazon.com/images/G/01/ape/sf/desktop/sf-1.01._V530423046_.html"
+   }
+}
+[20.054][DEBUG]: DEVTOOLS EVENT Runtime.executionContextCreated {
+   "context": {
+      "auxData": {
+         "frameId": "7439.2",
+         "isDefault": true
+      },
+      "id": 2,
+      "name": "",
+      "origin": "https://images-na.ssl-images-amazon.com"
+   }
+}
+[20.054][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=20) {
+   "expression": "1"
+}
+[20.106][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 4,
+   "nodeId": 14
+}
+[20.106][DEBUG]: DEVTOOLS EVENT DOM.attributeModified {
+   "name": "class",
+   "nodeId": 14,
+   "value": "a-m-us a-aui_51744-c a-aui_57326-c a-aui_58736-t1 a-aui_72554-c a-aui_83815-c a-aui_86171-c a-aui_96511-c a-aui_accessibility_49860-c a-aui_attr_validations_1_51371-c a-aui_bolt_62845-c a-aui_noope..."
+}
+[20.106][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 49,
+   "nodeId": 12
+}
+[20.106][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 50,
+   "nodeId": 12
+}
+[20.106][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 5,
+   "nodeId": 14
+}
+[20.108][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=20) {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[20.185][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 51,
+   "nodeId": 12
+}
+[20.185][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=21) {
+   "expression": "1"
+}
+[20.227][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=21) {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[20.292][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 6,
+   "nodeId": 14
+}
+[20.292][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 7,
+   "nodeId": 14
+}
+[20.292][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 8,
+   "nodeId": 14
+}
+[20.292][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 9,
+   "nodeId": 14
+}
+[20.292][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 10,
+   "nodeId": 14
+}
+[20.292][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 11,
+   "nodeId": 14
+}
+[20.292][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 12,
+   "nodeId": 14
+}
+[20.292][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 13,
+   "nodeId": 14
+}
+[20.292][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 14,
+   "nodeId": 14
+}
+[20.292][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=22) {
+   "expression": "1"
+}
+[20.292][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 13,
+   "nodeId": 14
+}
+[20.342][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 14,
+   "nodeId": 14
+}
+[20.342][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 13,
+   "nodeId": 14
+}
+[20.342][DEBUG]: DEVTOOLS EVENT Page.frameAttached {
+   "frameId": "7439.3",
+   "parentFrameId": "7439.1"
+}
+[20.342][DEBUG]: DEVTOOLS EVENT Page.frameStartedLoading {
+   "frameId": "7439.3"
+}
+[20.342][DEBUG]: DEVTOOLS EVENT Page.frameNavigated {
+   "frame": {
+      "id": "7439.3",
+      "loaderId": "7439.3",
+      "mimeType": "text/html",
+      "name": "",
+      "parentId": "7439.1",
+      "securityOrigin": "https://www.amazon.com",
+      "url": "about:blank"
+   }
+}
+[20.342][DEBUG]: DEVTOOLS EVENT Runtime.executionContextCreated {
+   "context": {
+      "auxData": {
+         "frameId": "7439.3",
+         "isDefault": true
+      },
+      "id": 3,
+      "name": "",
+      "origin": "https://www.amazon.com"
+   }
+}
+[20.342][DEBUG]: DEVTOOLS EVENT Page.frameStoppedLoading {
+   "frameId": "7439.3"
+}
+[20.344][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=22) {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[20.396][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 14,
+   "nodeId": 14
+}
+[20.396][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 13,
+   "nodeId": 14
+}
+[20.396][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=23) {
+   "expression": "1"
+}
+[20.403][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=23) {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[30.279][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 52,
+   "nodeId": 12
+}
+[30.279][DEBUG]: DEVTOOLS EVENT Log.entryAdded {
+   "entry": {
+      "level": "warning",
+      "lineNumber": 70,
+      "source": "deprecation",
+      "stackTrace": {
+         "callFrames": [ {
+            "columnNumber": 386,
+            "functionName": "",
+            "lineNumber": 70,
+            "scriptId": "98",
+            "url": "https://images-na.ssl-images-amazon.com/images/I/01sHjb7jFEL._RC%7C01JFM6wegIL.js,71RhSRynF6L.js,51tLzKxJ8XL.js,01A18a0oAWL.js,41dxgjlitrL.js,010XVa0zfKL.js,01wBjiz9OvL.js,21QhSEq5BwL.js,31GGfm3oEP..."
+         }, {
+            "columnNumber": 421,
+            "functionName": "",
+            "lineNumber": 37,
+            "scriptId": "98",
+            "url": "https://images-na.ssl-images-amazon.com/images/I/01sHjb7jFEL._RC%7C01JFM6wegIL.js,71RhSRynF6L.js,51tLzKxJ8XL.js,01A18a0oAWL.js,41dxgjlitrL.js,010XVa0zfKL.js,01wBjiz9OvL.js,21QhSEq5BwL.js,31GGfm3oEP..."
+         }, {
+            "columnNumber": 199,
+            "functionName": "d.onload",
+            "lineNumber": 104,
+            "scriptId": "98",
+            "url": "https://images-na.ssl-images-amazon.com/images/I/01sHjb7jFEL._RC%7C01JFM6wegIL.js,71RhSRynF6L.js,51tLzKxJ8XL.js,01A18a0oAWL.js,41dxgjlitrL.js,010XVa0zfKL.js,01wBjiz9OvL.js,21QhSEq5BwL.js,31GGfm3oEP..."
+         } ]
+      },
+      "text": "Calling CSSStyleSheet.insertRule() with one argument is deprecated. Please pass the index argument as well: insertRule(x, 0).",
+      "timestamp": 1492680897673.58,
+      "url": "https://images-na.ssl-images-amazon.com/images/I/01sHjb7jFEL._RC%7C01JFM6wegIL.js,71RhSRynF6L.js,51tLzKxJ8XL.js,01A18a0oAWL.js,41dxgjlitrL.js,010XVa0zfKL.js,01wBjiz9OvL.js,21QhSEq5BwL.js,31GGfm3oEP..."
+   }
+}
+[30.279][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=24) {
+   "expression": "1"
+}
+[30.280][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=24) {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[95.316][DEBUG]: DEVTOOLS EVENT Log.entryAdded {
+   "entry": {
+      "level": "error",
+      "networkRequestId": "7439.89",
+      "source": "network",
+      "text": "Failed to load resource: net::ERR_NETWORK_CHANGED",
+      "timestamp": 1492680962708.32,
+      "url": "https://aax-us-east.amazon-adsystem.com/e/xsp/imp?b=QidyxhWECEpUk5Tcsf4-LhIAAAFbirbKGgEAAAH1AcdANoY"
+   }
+}
+[95.316][DEBUG]: DEVTOOLS EVENT Log.entryAdded {
+   "entry": {
+      "level": "error",
+      "networkRequestId": "7439.98",
+      "source": "network",
+      "text": "Failed to load resource: net::ERR_NETWORK_CHANGED",
+      "timestamp": 1492680962708.62,
+      "url": "https://aax-us-east.amazon-adsystem.com/x/px/QidyxhWECEpUk5Tcsf4-LhIAAAFbirbKGgEAAAH1AcdANoY/v/%7B%22wh%22:825,%22ww%22:807,%22sx%22:0,%22sy%22:0,%22ah%22:250,%22aw%22:300,%22top%22:413,%22left%22:..."
+   }
+}
+[95.316][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=25) {
+   "expression": "1"
+}
+[95.316][DEBUG]: DEVTOOLS EVENT Log.entryAdded {
+   "entry": {
+      "level": "error",
+      "networkRequestId": "7439.72",
+      "source": "network",
+      "text": "Failed to load resource: net::ERR_NETWORK_CHANGED",
+      "timestamp": 1492680962709.23,
+      "url": "https://shopbop.sp1.convertro.com/view/vt/v1/shopbop/2/cvo.gif?cvosrc=display.house_sea.300_250_jpg_np&cvo_campaign=spreg2_edit&cvo_placement=desktop&cvo_creative=300_250_jpg_np"
+   }
+}
+[95.328][DEBUG]: DEVTOOLS EVENT Page.frameStoppedLoading {
+   "frameId": "7439.2"
+}
+[95.328][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 53,
+   "nodeId": 12
+}
+[95.328][DEBUG]: DEVTOOLS EVENT Page.loadEventFired {
+   "timestamp": 6204.860981
+}
+[95.328][DEBUG]: DEVTOOLS EVENT Page.frameStoppedLoading {
+   "frameId": "7439.1"
+}
+[95.328][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=25) {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[95.329][INFO]: Done waiting for pending navigations. Status: ok
+[95.329][INFO]: RESPONSE Navigate
+[95.332][INFO]: COMMAND Screenshot {
+
+}
+[95.332][INFO]: Waiting for pending navigations...
+[95.332][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=26) {
+   "expression": "1"
+}
+[95.399][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 14,
+   "nodeId": 14
+}
+[95.399][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 13,
+   "nodeId": 14
+}
+[95.400][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=26) {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[95.400][INFO]: Done waiting for pending navigations. Status: ok
+[95.400][DEBUG]: DevTools request: http://localhost:12049/json/activate/d1592a1d-1808-40da-a509-825f0b8993f2
+[95.401][DEBUG]: DevTools response: Target activated
+[95.401][DEBUG]: DEVTOOLS COMMAND Page.captureScreenshot (id=27) {
+
+}
+[95.401][DEBUG]: DEVTOOLS EVENT Log.entryAdded {
+   "entry": {
+      "level": "error",
+      "networkRequestId": "7439.153",
+      "source": "network",
+      "text": "Failed to load resource: net::ERR_NETWORK_CHANGED",
+      "timestamp": 1492680962793.52,
+      "url": "https://fls-na.amazon.com/1/batch/1/OP/ATVPDKIKX0DER:142-2114831-1755010:8M758AG6ZE3Z7WDS1MTT$uedata=s:%2Fgp%2Fuedata%3Fld%26v%3D0.776.13%26id%3D8M758AG6ZE3Z7WDS1MTT%26sw%3D1680%26sh%3D1050%26vw%3D..."
+   }
+}
+[95.401][DEBUG]: DEVTOOLS EVENT Log.entryAdded {
+   "entry": {
+      "level": "error",
+      "networkRequestId": "7439.154",
+      "source": "network",
+      "text": "Failed to load resource: net::ERR_NETWORK_CHANGED",
+      "timestamp": 1492680962793.68,
+      "url": "https://fls-na.amazon.com/1/batch/1/OP/ATVPDKIKX0DER:142-2114831-1755010:8M758AG6ZE3Z7WDS1MTT$uedata=s:%2Fgp%2Fuedata%3Fld%26v%3D0.776.13%26id%3D8M758AG6ZE3Z7WDS1MTT%26sc0%3Dportal-bb%26pc0%3D1%26l..."
+   }
+}
+[95.402][DEBUG]: DEVTOOLS EVENT Log.entryAdded {
+   "entry": {
+      "level": "error",
+      "networkRequestId": "7439.155",
+      "source": "network",
+      "text": "Failed to load resource: net::ERR_NETWORK_CHANGED",
+      "timestamp": 1492680962793.83,
+      "url": "https://images-na.ssl-images-amazon.com/images/G/01/AUIClients/ClientSideMetricsAUIJavascript-87b70018b1843268021b98bf3c15ee37e346c1ac._V2_.js"
+   }
+}
+[95.402][DEBUG]: DEVTOOLS EVENT Log.entryAdded {
+   "entry": {
+      "level": "error",
+      "networkRequestId": "7439.156",
+      "source": "network",
+      "text": "Failed to load resource: net::ERR_NETWORK_CHANGED",
+      "timestamp": 1492680962793.91,
+      "url": "https://www.amazon.com/gp/product/sessionCacheUpdateHandler.html"
+   }
+}
+[95.402][DEBUG]: DEVTOOLS EVENT Log.entryAdded {
+   "entry": {
+      "level": "error",
+      "networkRequestId": "7439.152",
+      "source": "network",
+      "text": "Failed to load resource: net::ERR_NETWORK_CHANGED",
+      "timestamp": 1492680962794.19,
+      "url": "https://www.amazon.com/gp/uedata?ld&v=0.776.13&id=8M758AG6ZE3Z7WDS1MTT&sw=1680&sh=1050&vw=807&vh=825&m=1&sc=8M758AG6ZE3Z7WDS1MTT&ue=16&bb=271&ns=274&ne=397&af=398&cf=398&x1=467&x2=467&be=501&pc=758..."
+   }
+}
+[95.784][DEBUG]: DEVTOOLS RESPONSE Page.captureScreenshot (id=27) {
+   "data": "iVBORw0KGgoAAAANSUhEUgAABk4AAAZyCAYAAAB2dxiyAAAMF2lDQ1BJQ0MgUHJvZmlsZQAASImVlwdUU0kXx+eVFEJCC0RASuhNkF6ld6nSwUZIAoQSQiCo2JFFBdcuIigqugJiWwsgi4rYlUXAXhdEVJR1sWBD5ZskgK77lfPdc+a9X+7cufOfycw7MwDI27IEg..."
+}
+[95.784][INFO]: Waiting for pending navigations...
+[95.784][DEBUG]: DEVTOOLS EVENT Page.frameAttached {
+   "frameId": "7439.4",
+   "parentFrameId": "7439.1"
+}
+[95.784][DEBUG]: DEVTOOLS EVENT Page.frameStartedLoading {
+   "frameId": "7439.4"
+}
+[95.784][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=28) {
+   "expression": "1"
+}
+[95.785][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=28) {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[96.266][DEBUG]: DEVTOOLS EVENT Page.frameNavigated {
+   "frame": {
+      "id": "7439.4",
+      "loaderId": "7439.4",
+      "mimeType": "text/html",
+      "name": "DAsis",
+      "parentId": "7439.1",
+      "securityOrigin": "https://s.amazon-adsystem.com",
+      "url": "https://s.amazon-adsystem.com/iu3?d=amazon.com&slot=navFooter&a2=0101e57c797e26f1ec72b6f73a96806a686630abcf0d3c9e14f9c9bf48c0b0293ee2&old_oo=0&cb=1492680886848&dcc=t"
+   }
+}
+[96.266][DEBUG]: DEVTOOLS EVENT Runtime.executionContextCreated {
+   "context": {
+      "auxData": {
+         "frameId": "7439.4",
+         "isDefault": true
+      },
+      "id": 4,
+      "name": "",
+      "origin": "https://s.amazon-adsystem.com"
+   }
+}
+[96.266][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=29) {
+   "expression": "1"
+}
+[96.267][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=29) {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[96.268][DEBUG]: DEVTOOLS EVENT Page.frameAttached {
+   "frameId": "7439.5",
+   "parentFrameId": "7439.4"
+}
+[96.268][DEBUG]: DEVTOOLS EVENT Page.frameStartedLoading {
+   "frameId": "7439.5"
+}
+[96.268][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=30) {
+   "expression": "1"
+}
+[96.269][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=30) {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[96.365][DEBUG]: DEVTOOLS EVENT Page.frameNavigated {
+   "frame": {
+      "id": "7439.5",
+      "loaderId": "7439.5",
+      "mimeType": "text/html",
+      "name": "",
+      "parentId": "7439.4",
+      "securityOrigin": "https://s.amazon-adsystem.com",
+      "url": "https://s.amazon-adsystem.com/v3/pr?exlist=pp_sx_ns_kr_g_bsw_ox_index_aold_an_rb_br_fbca_aolv_ppt_twca_y_pm_adelphic&fv=1.0&ex-pl-fbca=je6koYlsSB2tbmC8VzlO5Q&ex-pl-twca=_7XPaIs0QaKOWsYjQhCu9Q&a=cm"
+   }
+}
+[96.365][DEBUG]: DEVTOOLS EVENT Runtime.executionContextCreated {
+   "context": {
+      "auxData": {
+         "frameId": "7439.5",
+         "isDefault": true
+      },
+      "id": 5,
+      "name": "",
+      "origin": "https://s.amazon-adsystem.com"
+   }
+}
+[96.365][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=31) {
+   "expression": "1"
+}
+[96.368][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=31) {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[96.829][DEBUG]: DEVTOOLS EVENT DOM.childNodeInserted {
+   "node": {
+      "attributes": [ "src", "https://images-na.ssl-images-amazon.com/images/I/618Jx+EMr-L._RC|01pVbSC-RPL.css,11Fd9tJOdtL.css,21ULbzscqzL.css,31Q3id-QR0L.css,31CtRvGpsfL.css_.css?AUIClients/AmazonUI#us.not-trident", "style", "display: none;" ],
+      "backendNodeId": 25,
+      "childNodeCount": 0,
+      "localName": "img",
+      "nodeId": 16,
+      "nodeName": "IMG",
+      "nodeType": 1,
+      "nodeValue": ""
+   },
+   "parentNodeId": 10,
+   "previousNodeId": 14
+}
+[96.829][DEBUG]: DEVTOOLS EVENT DOM.childNodeInserted {
+   "node": {
+      "attributes": [ "src", "https://images-na.ssl-images-amazon.com/images/I/61juHoMBqmL._RC|01GLjU+hieL.css,31+C8rQtOEL.css,21E1MhZOpTL.css,31AMpirNLiL.css,01NHva6qGRL.css,31UlxNhlUML.css_.css?AUIClients/NavDesktopMetaAsset#...", "style", "display: none;" ],
+      "backendNodeId": 26,
+      "childNodeCount": 0,
+      "localName": "img",
+      "nodeId": 17,
+      "nodeName": "IMG",
+      "nodeType": 1,
+      "nodeValue": ""
+   },
+   "parentNodeId": 10,
+   "previousNodeId": 16
+}
+[96.829][DEBUG]: DEVTOOLS EVENT DOM.childNodeInserted {
+   "node": {
+      "attributes": [ "src", "https://images-na.ssl-images-amazon.com/images/I/01sHjb7jFEL._RC|01JFM6wegIL.js,71RhSRynF6L.js,51tLzKxJ8XL.js,01A18a0oAWL.js,41dxgjlitrL.js,010XVa0zfKL.js,01wBjiz9OvL.js,21QhSEq5BwL.js,31GGfm3oEPL....", "style", "display: none;" ],
+      "backendNodeId": 27,
+      "childNodeCount": 0,
+      "localName": "img",
+      "nodeId": 18,
+      "nodeName": "IMG",
+      "nodeType": 1,
+      "nodeValue": ""
+   },
+   "parentNodeId": 10,
+   "previousNodeId": 17
+}
+[96.829][DEBUG]: DEVTOOLS EVENT DOM.childNodeInserted {
+   "node": {
+      "attributes": [ "src", "https://images-na.ssl-images-amazon.com/images/I/01sHjb7jFEL._RC|61tHvuwljLL.js,11IYhapguOL.js,61Z-hR1QEiL.js,31pYyxAZJRL.js,31Qll8kfk9L.js,01N6xzIJxbL.js,516fQ5+zVmL.js,01rpauTep4L.js,31JzIBuTmgL....", "style", "display: none;" ],
+      "backendNodeId": 28,
+      "childNodeCount": 0,
+      "localName": "img",
+      "nodeId": 19,
+      "nodeName": "IMG",
+      "nodeType": 1,
+      "nodeValue": ""
+   },
+   "parentNodeId": 10,
+   "previousNodeId": 18
+}
+[96.829][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=32) {
+   "expression": "1"
+}
+[96.831][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=32) {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[96.831][DEBUG]: DEVTOOLS EVENT DOM.setChildNodes {
+   "nodes": [  ],
+   "parentId": 16
+}
+[96.831][DEBUG]: DEVTOOLS EVENT DOM.shadowRootPushed {
+   "hostId": 16,
+   "root": {
+      "backendNodeId": 29,
+      "childNodeCount": 0,
+      "localName": "",
+      "nodeId": 20,
+      "nodeName": "#document-fragment",
+      "nodeType": 11,
+      "nodeValue": "",
+      "shadowRootType": "user-agent"
+   }
+}
+[96.831][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 1,
+   "nodeId": 20
+}
+[96.831][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=33) {
+   "expression": "1"
+}
+[96.832][DEBUG]: DEVTOOLS EVENT DOM.childNodeRemoved {
+   "nodeId": 16,
+   "parentNodeId": 10
+}
+[96.835][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=33) {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[96.835][DEBUG]: DEVTOOLS EVENT DOM.setChildNodes {
+   "nodes": [  ],
+   "parentId": 17
+}
+[96.835][DEBUG]: DEVTOOLS EVENT DOM.shadowRootPushed {
+   "hostId": 17,
+   "root": {
+      "backendNodeId": 30,
+      "childNodeCount": 0,
+      "localName": "",
+      "nodeId": 21,
+      "nodeName": "#document-fragment",
+      "nodeType": 11,
+      "nodeValue": "",
+      "shadowRootType": "user-agent"
+   }
+}
+[96.835][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 1,
+   "nodeId": 21
+}
+[96.835][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=34) {
+   "expression": "1"
+}
+[96.836][DEBUG]: DEVTOOLS EVENT DOM.childNodeRemoved {
+   "nodeId": 17,
+   "parentNodeId": 10
+}
+[96.836][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=34) {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[96.837][DEBUG]: DEVTOOLS EVENT DOM.setChildNodes {
+   "nodes": [  ],
+   "parentId": 18
+}
+[96.837][DEBUG]: DEVTOOLS EVENT DOM.shadowRootPushed {
+   "hostId": 18,
+   "root": {
+      "backendNodeId": 31,
+      "childNodeCount": 0,
+      "localName": "",
+      "nodeId": 22,
+      "nodeName": "#document-fragment",
+      "nodeType": 11,
+      "nodeValue": "",
+      "shadowRootType": "user-agent"
+   }
+}
+[96.837][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 1,
+   "nodeId": 22
+}
+[96.837][DEBUG]: DEVTOOLS EVENT DOM.childNodeRemoved {
+   "nodeId": 18,
+   "parentNodeId": 10
+}
+[96.837][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=35) {
+   "expression": "1"
+}
+[96.838][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=35) {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[96.883][DEBUG]: DEVTOOLS EVENT DOM.setChildNodes {
+   "nodes": [  ],
+   "parentId": 19
+}
+[96.883][DEBUG]: DEVTOOLS EVENT DOM.shadowRootPushed {
+   "hostId": 19,
+   "root": {
+      "backendNodeId": 32,
+      "childNodeCount": 0,
+      "localName": "",
+      "nodeId": 23,
+      "nodeName": "#document-fragment",
+      "nodeType": 11,
+      "nodeValue": "",
+      "shadowRootType": "user-agent"
+   }
+}
+[96.883][DEBUG]: DEVTOOLS EVENT DOM.childNodeCountUpdated {
+   "childNodeCount": 1,
+   "nodeId": 23
+}
+[96.883][DEBUG]: DEVTOOLS EVENT DOM.childNodeRemoved {
+   "nodeId": 19,
+   "parentNodeId": 10
+}
+[96.883][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=36) {
+   "expression": "1"
+}
+[96.884][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=36) {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[97.216][DEBUG]: DEVTOOLS EVENT Page.frameStoppedLoading {
+   "frameId": "7439.5"
+}
+[97.216][DEBUG]: DEVTOOLS EVENT Page.frameStoppedLoading {
+   "frameId": "7439.4"
+}
+[97.216][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=37) {
+   "expression": "1"
+}
+[97.217][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=37) {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[97.217][INFO]: Done waiting for pending navigations. Status: ok
+[97.217][INFO]: RESPONSE Screenshot "iVBORw0KGgoAAAANSUhEUgAABk4AAAZyCAYAAAB2dxiyAAAMF2lDQ1BJQ0MgUHJvZmlsZQAASImVlwdUU0kXx+eVFEJCC0RASuhNkF6ld6nSwUZIAoQSQiCo2JFFBdcuIigqugJiWwsgi4rYlUXAXhdEVJR1sWBD5ZskgK77lfPdc+a9X+7cufOfycw7MwDI27IEg..."
+[97.338][INFO]: COMMAND FindElements {
+   "using": "tag name",
+   "value": "a"
+}
+[97.338][INFO]: Waiting for pending navigations...
+[97.338][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=38) {
+   "expression": "1"
+}
+[97.339][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=38) {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[97.339][INFO]: Done waiting for pending navigations. Status: ok
+[97.340][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=39) {
+   "expression": "(function() { // Copyright (c) 2012 The Chromium Authors. All rights reserved.\n// Use of this source code is governed by a BSD-style license that can be\n// found in the LICENSE file.\n\n/**\n * Enum f...",
+   "returnByValue": true
+}
+[97.367][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=39) {
+   "result": {
+      "type": "object",
+      "value": {
+         "status": 0,
+         "value": [ {
+            "ELEMENT": "0.966861722694736-1"
+         }, {
+            "ELEMENT": "0.966861722694736-2"
+         }, {
+            "ELEMENT": "0.966861722694736-3"
+         }, {
+            "ELEMENT": "0.966861722694736-4"
+         }, {
+            "ELEMENT": "0.966861722694736-5"
+         }, {
+            "ELEMENT": "0.966861722694736-6"
+         }, {
+            "ELEMENT": "0.966861722694736-7"
+         }, {
+            "ELEMENT": "0.966861722694736-8"
+         }, {
+            "ELEMENT": "0.966861722694736-9"
+         }, {
+            "ELEMENT": "0.966861722694736-10"
+         }, {
+            "ELEMENT": "0.966861722694736-11"
+         }, {
+            "ELEMENT": "0.966861722694736-12"
+         }, {
+            "ELEMENT": "0.966861722694736-13"
+         }, {
+            "ELEMENT": "0.966861722694736-14"
+         }, {
+            "ELEMENT": "0.966861722694736-15"
+         }, {
+            "ELEMENT": "0.966861722694736-16"
+         }, {
+            "ELEMENT": "0.966861722694736-17"
+         }, {
+            "ELEMENT": "0.966861722694736-18"
+         }, {
+            "ELEMENT": "0.966861722694736-19"
+         }, "..." ]
+      }
+   }
+}
+[97.367][INFO]: Waiting for pending navigations...
+[97.367][DEBUG]: DEVTOOLS COMMAND Runtime.evaluate (id=40) {
+   "expression": "1"
+}
+[97.368][DEBUG]: DEVTOOLS RESPONSE Runtime.evaluate (id=40) {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[97.368][INFO]: Done waiting for pending navigations. Status: ok
+[97.368][INFO]: RESPONSE FindElements [ {
+   "ELEMENT": "0.966861722694736-1"
+}, {
+   "ELEMENT": "0.966861722694736-2"
+}, {
+   "ELEMENT": "0.966861722694736-3"
+}, {
+   "ELEMENT": "0.966861722694736-4"
+}, {
+   "ELEMENT": "0.966861722694736-5"
+}, {
+   "ELEMENT": "0.966861722694736-6"
+}, {
+   "ELEMENT": "0.966861722694736-7"
+}, {
+   "ELEMENT": "0.966861722694736-8"
+}, {
+   "ELEMENT": "0.966861722694736-9"
+}, {
+   "ELEMENT": "0.966861722694736-10"
+}, {
+   "ELEMENT": "0.966861722694736-11"
+}, {
+   "ELEMENT": "0.966861722694736-12"
+}, {
+   "ELEMENT": "0.966861722694736-13"
+}, {
+   "ELEMENT": "0.966861722694736-14"
+}, {
+   "ELEMENT": "0.966861722694736-15"
+}, {
+   "ELEMENT": "0.966861722694736-16"
+}, {
+   "ELEMENT": "0.966861722694736-17"
+}, {
+   "ELEMENT": "0.966861722694736-18"
+}, {
+   "ELEMENT": "0.966861722694736-19"
+}, "..." ]
+[102.412][INFO]: COMMAND Quit {
+
+}
+[102.463][INFO]: RESPONSE Quit
+[102.464][DEBUG]: Log type 'driver' lost 0 entries on destruction
+[102.464][DEBUG]: Log type 'browser' lost 9 entries on destruction

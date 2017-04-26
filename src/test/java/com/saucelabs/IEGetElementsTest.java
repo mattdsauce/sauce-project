@@ -81,7 +81,7 @@ public class IEGetElementsTest implements SauceOnDemandSessionIdProvider {
         LinkedList browsers = new LinkedList();
         // browsers.add(new String[]{"Windows 8.1", "11", "internet explorer"});
         //browsers.add(new String[]{"Windows 7", "11", "internet explorer"});
-        browsers.add(new String[]{"Windows 7", "10", "internet explorer"});
+        browsers.add(new String[]{"Windows 7", "11", "internet explorer"});
         return browsers;
     }
 
@@ -102,11 +102,11 @@ public class IEGetElementsTest implements SauceOnDemandSessionIdProvider {
             capabilities.setCapability(CapabilityType.VERSION, version);
         }
         capabilities.setCapability(CapabilityType.PLATFORM, os);
-        //capabilities.setCapability(CapabilityType.PAGE_LOADING_STRATEGY, "eager");
-        String ieDriverVer = "2.48.0";
-        capabilities.setCapability("iedriverVersion", ieDriverVer);
-        capabilities.setCapability("screenResolution", "1280x1024");
-        capabilities.setCapability("name", "IE Get Elements Test - iedriverVersion " + ieDriverVer);
+        capabilities.setCapability(CapabilityType.PAGE_LOADING_STRATEGY, "eager");
+        //String ieDriverVer = "2.48.0";
+       // capabilities.setCapability("iedriverVersion", ieDriverVer);
+        //capabilities.setCapability("screenResolution", "1280x1024");
+        capabilities.setCapability("name", "IE Get Elements Test"); // - iedriverVersion " + ieDriverVer);
         this.driver = new RemoteWebDriver(
                 new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),
                 capabilities);

@@ -51,8 +51,8 @@ public class DragDropTest implements SauceOnDemandSessionIdProvider {
 
     final String host = System.getProperty("host", "saucelabs");
     final String browser = System.getProperty("browser", "firefox");
-    final String browserVersion = System.getProperty("browserVersion", "41");
-    final String platform = System.getProperty("platform", "OS X 10.10");
+    final String browserVersion = System.getProperty("browserVersion", "38");
+    final String platform = System.getProperty("platform", "Windows 8");
 
     @Before
     public void setUp() throws Exception {
