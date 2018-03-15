@@ -95,7 +95,7 @@ public class ChromeExtensionTest implements SauceOnDemandSessionIdProvider {
                 firstTab = subWindowHandler;
             }
         }
-        driver.switchTo().window(firstTab);
+        //driver.switchTo().window(firstTab);
 
 
     }

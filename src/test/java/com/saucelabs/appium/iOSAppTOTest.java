@@ -19,7 +19,7 @@ import static org.junit.Assert.assertNotNull;
 
 public class iOSAppTOTest{
 
-    private AppiumDriver driver;
+    private AppiumDriver<WebElement> driver;
 
     /* Takes care of sending the result of the tests over to TestObject. */
     @Rule
@@ -34,13 +34,16 @@ public class iOSAppTOTest{
     @Before
     public void setUp() throws Exception {
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("testobject_api_key", "5FB5B68D68134496B6166F994D6AC268");
-        capabilities.setCapability("testobject_device", "iPhone_6S_16GB_real");
-        //capabilities.setCapability("testobject_device", "iPhone_7_32GB_10_real");
-        capabilities.setCapability("testobject_appium_version", "1.6.0");
+        capabilities.setCapability("testobject_api_key", "A6595D46DB1C4698914FBDE5E575C6E5"); // csteam/calculator
+        capabilities.setCapability("deviceName", "iPhone_SE_10_2_POC108");
+        //capabilities.setCapability("platformName", "iOS");
+        //capabilities.setCapability("platformVersion", "10");
+        capabilities.setCapability("noReset", false);
+        //capabilities.setCapability("testobject_cache_device", true);
         capabilities.setCapability("automationName", "XCUITest");
+        //capabilities.setCapability("deviceOrientation", "landscape");
 
-        driver = new IOSDriver(new URL("http://appium.testobject.com/wd/hub"), capabilities);
+        driver = new IOSDriver<WebElement>(new URL("http://us1.appium.testobject.com/wd/hub"), capabilities);
         //driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
         resultWatcher.setRemoteWebDriver(driver);
@@ -55,18 +58,17 @@ public class iOSAppTOTest{
     @Test
     public void testMethod() throws Exception {
 
-        //Launch app
-        driver.launchApp();
-        driver.rotate(ScreenOrientation.LANDSCAPE);
+        String elemText = driver.findElementsByClassName("UIAStaticText").get(0).getText();
+        assertNotNull(elemText);
 
-        //Enter KID back to main view
-        driver.findElement(By.name("home_kidsdesk_button")).click();
+    }
 
-        //Close guide
-        driver.findElement(By.name("DDGuide Close")).click();
+    @Test
+    public void testMethod2() throws Exception {
 
-        //Open Sticker view
-        driver.findElement(By.name("Add Sticker")).click();
+        String elemText = driver.findElementsByClassName("UIAStaticText").get(0).getText();
+        assertNotNull(elemText);
+
     }
 
 }

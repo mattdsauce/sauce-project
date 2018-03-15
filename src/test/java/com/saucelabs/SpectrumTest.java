@@ -10,14 +10,18 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -85,15 +89,6 @@ public class SpectrumTest implements SauceOnDemandSessionIdProvider {
     @ConcurrentParameterized.Parameters
     public static LinkedList browsersStrings() {
         LinkedList browsers = new LinkedList();
-        //browsers.add(new String[]{"macOS 10.12", "latest", "firefox"});
-        //browsers.add(new String[]{"Windows 10", "11", "internet explorer"});
-        //browsers.add(new String[]{"Windows 10", "14", "MicrosoftEdge"});
-        //browsers.add(new String[]{"Windows 10", "50", "firefox"});
-        //browsers.add(new String[]{"windows 7", "55", "chrome"});
-        //browsers.add(new String[]{"windows 8.1", "latest", "chrome"});
-        //browsers.add(new String[]{"windows 8.1", "56", "chrome"});
-        //browsers.add(new String[]{"windows 8.1", "55", "chrome"});
-        //browsers.add(new String[]{"linux", "latest", "firefox"});
         browsers.add(new String[]{"macOS 10.12", "10.0", "safari"});
         return browsers;
     }
@@ -115,25 +110,17 @@ public class SpectrumTest implements SauceOnDemandSessionIdProvider {
             capabilities.setCapability(CapabilityType.VERSION, version);
         }
         capabilities.setCapability(CapabilityType.PLATFORM, os);
-        //capabilities.setCapability("javascriptEnabled",true);
-        //capabilities.setCapability("tunnelIdentifier", "mattTunnel");
-        capabilities.setCapability("seleniumVersion", "3.3.1");
-        //capabilities.setCapability("iedriverVersion", "3.3.0");
-        capabilities.setCapability("chromedriverVersion", "2.29");
-        //capabilities.setCapability("captureHtml",true);
-        //capabilities.setCapability("marionette", false);
-        //capabilities.setCapability("avoidProxy", true);
-        //capabilities.setCapability("unexpectedAlertBehaviour", "ignore");
-        //capabilities.setCapability("timeZone", "London");
-        //capabilities.setCapability("public", "private");
-        capabilities.setCapability("name", "Sauce Sample Test: " + browser + " " + version + ", " + os);
-        //capabilities.setCapability("build", "testBuild");
-        //System.out.println("Before creating RemoteWebDriver: " + time_formatter.format(System.currentTimeMillis()));
+        HashMap<String,Object> prerun = new HashMap<String,Object>();
+        prerun.put("executable","https://gist.githubusercontent.com/saucyallison/3a73a4e0736e556c990d/raw/d26b0195d48b404628fc12342cb97f1fc5ff58ec/disable_fraud.sh");
+        prerun.put("background",false);
+        prerun.put("timeout","120");
+        capabilities.setCapability("prerun", prerun);
+        capabilities.setCapability("safariIgnoreFraudWarning", true);
+        capabilities.setCapability("screenResolution", "1400x1050");
+        capabilities.setCapability("name", "Spectrum Routing Number Test: " + browser + " " + version + ", " + os);
         this.driver = new RemoteWebDriver(
-                new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),
-                //new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@localhost:4445/wd/hub"),
+                new URL("https://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com/wd/hub"),
                 capabilities);
-        //System.out.println("After creating RemoteWebDriver: " + time_formatter.format(System.currentTimeMillis()));
         this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
 
     }
@@ -143,22 +130,36 @@ public class SpectrumTest implements SauceOnDemandSessionIdProvider {
      * @throws Exception
      */
     @Test
-    public void loadpage() throws Exception {
-        //System.out.println("Before driver.get: " + time_formatter.format(System.currentTimeMillis()));
-        driver.get("https://amazon.com");
-        //driver.get("http://localhost:8080/examples/servlets/servlet/HelloWorldExample");
+    public void doTest() throws Exception {
+        driver.get("http://charternet:Chart3rn3t@www.engnew-spectrum.net");
 
-        //System.out.println("After driver.get: " + time_formatter.format(System.currentTimeMillis()));
+        // click 'Sign In' link
+        WebElement el = driver.findElement(By.xpath("//li/a[contains(text(),'Sign In')]"));
+        el.click();
 
-        List<WebElement> anchors = driver.findElements(By.tagName("a"));
-        for (WebElement anchor: anchors) {
-            System.out.println("anchor: " + anchor.getAttribute("outerHTML"));
-        }
+        // log in
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='cc-username']")));
+        el = driver.findElement(By.xpath("//*[@id='cc-username']"));
+        el.sendKeys("virtualhomestandard");
 
-        Thread.sleep(2000);
 
-        assertTrue(driver.getTitle().startsWith("Amazon"));
-        //assertTrue(driver.getTitle().startsWith("Hello"));
+        el = driver.findElement(By.xpath("//input[@ng-model='form.password']"));
+        el.sendKeys("Sit_test01");
+
+        el = driver.findElement(By.id("login-form-button"));
+        elementHighlight(el);
+        el.click();
+        JavascriptExecutor executor = (JavascriptExecutor)driver;
+        executor.executeScript("sauce: break");
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"page-header\"]/div/div/div/div[1]/ul/li[1]/span/a")));
+        el = driver.findElement(By.xpath("//*[@id=\"page-header\"]/div/div/div/div[1]/ul/li[1]/span/a"));
+        assertTrue(el.getText().equals("virtualhomestandard"));
+
+        Thread.sleep(120000);
+
+        assertTrue(driver.getTitle().startsWith("Spectrum"));
     }
 
     /**
@@ -168,7 +169,6 @@ public class SpectrumTest implements SauceOnDemandSessionIdProvider {
      */
     @After
     public void tearDown() throws Exception {
-        //System.out.println("Before driver.quit: " + time_formatter.format(System.currentTimeMillis()));
         driver.quit();
     }
 
@@ -179,5 +179,18 @@ public class SpectrumTest implements SauceOnDemandSessionIdProvider {
     @Override
     public String getSessionId() {
         return sessionId;
+    }
+
+
+    public void elementHighlight(WebElement element) {
+        for (int i = 0; i < 2; i++) {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript(
+                    "arguments[0].setAttribute('style', arguments[1]);",
+                    element, "color: red; border: 3px solid red;");
+            js.executeScript(
+                    "arguments[0].setAttribute('style', arguments[1]);",
+                    element, "");
+        }
     }
 }

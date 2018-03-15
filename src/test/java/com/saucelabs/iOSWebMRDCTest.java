@@ -14,6 +14,8 @@ import org.testobject.appium.junit.TestObjectTestResultWatcher;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Time;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertTrue;
 
@@ -37,10 +39,20 @@ public class iOSWebMRDCTest {
     public void setUp() throws Exception {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("testobject_api_key", "09952D684DFC43E7AFC250CCFD879E70");
-        capabilities.setCapability("testobject_device", "iPhone_7_32GB_10_real");
+        capabilities.setCapability("testobject_api_key", "35984A06E3D747BA817DD3F5EB894A2E"); // csteam/amazon
+        //capabilities.setCapability("testobject_api_key", "791EA53D19B1465C81F767C5E22E0733"); // testobject/amazon
+        capabilities.setCapability("testobject_device", "iPhone_6S_Plus_real");
+        //capabilities.setCapability("testobject_appium_version", "1.6.5");
+        capabilities.setCapability("autoDismissAlerts", true);
+        //capabilities.setCapability("platformName", "iOS");
+        //capabilities.setCapability("platformVersion", "11.2.6");
+        //capabilities.setCapability("tunnelIdentifier", "mdtunnel");
+        //capabilities.setCapability("browserName", "safari");
+        //capabilities.setCapability("deviceOrientation", "portrait");
         capabilities.setCapability("automationName", "XCUITest");
-        driver = new IOSDriver(new URL("http://appium.testobject.com/wd/hub"), capabilities);
+        driver = new IOSDriver(new URL("http://eu1.appium.testobject.com/wd/hub"), capabilities);
+        driver.manage().timeouts().pageLoadTimeout(130000, TimeUnit.MILLISECONDS);
+        driver.manage().timeouts().setScriptTimeout(130000, TimeUnit.MILLISECONDS);
 
         /* IMPORTANT! We need to provide the Watcher with our initialized AppiumDriver */
         resultWatcher.setRemoteWebDriver(driver);
@@ -53,23 +65,12 @@ public class iOSWebMRDCTest {
     @Test
     public void doTest() throws Exception {
 
-        driver.get("https://www.amazon.com");
+        Thread.sleep(2000);
 
-        WebElement el = driver.findElement(By.id("nav-search-keywords"));
-        el.sendKeys("Trump hot sauce");
-        el = driver.findElement(By.xpath("//*[@id=\"nav-search-form\"]/div[1]/div/input"));
-        el.click();
+        driver.get("https://google.com");
 
-        takeScreenshot("/Users/mattdunn/temp/scr1.jpg");
-
-        el = driver.findElement(By.xpath("//*[@id=\"resultItems\"]/li[1]/div/div[1]/a/div[1]/img"));
-        el.click();
-
-        takeScreenshot("/Users/mattdunn/temp/scr2.jpg");
-
-        Thread.sleep(10000);
-
-        assertTrue(driver.getTitle().contains("HOT"));
+        Thread.sleep(5000);
+        assertTrue(driver.getTitle().toLowerCase().contains("google"));
 
     }
 

@@ -16,6 +16,7 @@ import java.net.URL;
 import java.util.*;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class PreRunTest implements SauceOnDemandSessionIdProvider {
 
@@ -53,13 +54,13 @@ public class PreRunTest implements SauceOnDemandSessionIdProvider {
 
 
         DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability("platform", "Windows 7");
+        caps.setCapability("platform", "OS X 10.11");
         caps.setCapability("browserName", "chrome");
         caps.setCapability("version", "latest");
         caps.setCapability("name", "PreRun Executable Test");
 
         HashMap<String,Object> prerun = new HashMap<String,Object>();
-        prerun.put("executable","sauce-storage:dummy.bat");
+        prerun.put("executable","sauce-storage:prerun.sh");
         //prerun.put("executable","https://gist.githubusercontent.com/saucyallison/3a73a4e0736e556c990d/raw/d26b0195d48b404628fc12342cb97f1fc5ff58ec/disable_fraud.sh");
         prerun.put("background",false);
         prerun.put("timeout","120");
@@ -78,10 +79,10 @@ public class PreRunTest implements SauceOnDemandSessionIdProvider {
      * @throws Exception
      */
     @Test
-    public void amazon() throws Exception {
-        driver.get("http://www.amazon.com/");
+    public void doTest() throws Exception {
+        driver.get("http://admin.softwareadvice.com");
         Thread.sleep(30000);
-        assertEquals("Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more", driver.getTitle());
+        assertTrue(driver.getTitle().contains("Sauce"));
     }
 
     /**

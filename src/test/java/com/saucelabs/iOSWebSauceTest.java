@@ -48,12 +48,12 @@ public class iOSWebSauceTest implements SauceOnDemandSessionIdProvider {
     public void setUp() throws Exception {
 
         DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability("appiumVersion", "1.6.4");
+        caps.setCapability("appiumVersion", "1.6.5");
         caps.setCapability("platformName", "iOS");
-        caps.setCapability("platformVersion", "10.2");
+        caps.setCapability("platformVersion", "9.3");
         caps.setCapability("browserName", "safari");
-        caps.setCapability("deviceName","iPhone 7 Simulator");
-        caps.setCapability("deviceOrientation", "portrait");
+        caps.setCapability("deviceName","iPhone 6 Simulator");
+        caps.setCapability("deviceOrientation", "landscape");
         caps.setCapability("autoAcceptAlerts", true);
         caps.setCapability("javascript", true);
         caps.setCapability("name", "iOS Web Sauce Test");
@@ -86,7 +86,7 @@ public class iOSWebSauceTest implements SauceOnDemandSessionIdProvider {
 
         Thread.sleep(10000);
 
-        assertTrue(driver.getTitle().contains("HOT"));
+        assertTrue(driver.getTitle().contains("Amazon"));
 
     }
 

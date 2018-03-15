@@ -55,14 +55,15 @@ public class FileDetectorTest implements SauceOnDemandSessionIdProvider {
     @Before
     public void setUp() throws Exception {
 
-        DesiredCapabilities caps = DesiredCapabilities.chrome();
-        caps.setCapability("platform", "OS X 10.10");
-        caps.setCapability("version", "45.0");
+        DesiredCapabilities caps = DesiredCapabilities.firefox();
+        caps.setCapability("platform", "Windows 7");
+        caps.setCapability("version", "latest");
+        caps.setCapability("seleniumVersion","3.5.0");
 
 
         caps.setCapability("name", "File Detector Test");
         driver = new RemoteWebDriver(
-                new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),
+                new URL("https://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com/wd/hub"),
                 caps);
         driver.setFileDetector(new LocalFileDetector());
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -76,10 +77,10 @@ public class FileDetectorTest implements SauceOnDemandSessionIdProvider {
     public void upload() throws Exception {
         driver.get("http://sl-test.herokuapp.com/guinea_pig/file_upload");
         WebElement upload = driver.findElement(By.id("myfile"));
-        upload.sendKeys("/Users/mattdunn/temp/s-l500.jpg");
+        upload.sendKeys("/Users/mattdunn/temp/big_photo.jpg");
         driver.findElement(By.id("submit")).click();
         driver.findElement(By.tagName("img"));
-        assertEquals("s-l500.jpg (image/jpeg)", driver.findElement(By.tagName("p")).getText());
+        assertEquals("big_photo.jpg (image/jpeg)", driver.findElement(By.tagName("p")).getText());
     }
 
     /**

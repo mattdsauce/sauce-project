@@ -51,8 +51,8 @@ public class DragDropTest implements SauceOnDemandSessionIdProvider {
 
     final String host = System.getProperty("host", "saucelabs");
     final String browser = System.getProperty("browser", "firefox");
-    final String browserVersion = System.getProperty("browserVersion", "38");
-    final String platform = System.getProperty("platform", "Windows 8");
+    final String browserVersion = System.getProperty("browserVersion", "58");
+    final String platform = System.getProperty("platform", "Windows 10");
 
     @Before
     public void setUp() throws Exception {
@@ -64,6 +64,7 @@ public class DragDropTest implements SauceOnDemandSessionIdProvider {
             capabilities.setCapability("version", browserVersion);
             capabilities.setCapability("platform", platform);
             capabilities.setCapability("name", "Drag Drop Test");
+            capabilities.setCapability("seleniumVersion", "3.8.1");
             String sauceUrl = String.format("http://%s:%s@ondemand.saucelabs.com:80/wd/hub",
                     authentication.getUsername(), authentication.getAccessKey());
             driver = new RemoteWebDriver(new URL(sauceUrl), capabilities);

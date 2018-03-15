@@ -12,6 +12,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertTrue;
@@ -41,14 +42,20 @@ public class iOSTest implements SauceOnDemandSessionIdProvider {
      */
     private WebDriver driver;
 
+    private SimpleDateFormat time_formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+
+    private void logMessage(String m) {
+        System.out.println(time_formatter.format(System.currentTimeMillis()) + ": " + m);
+    }
+
 
     @Before
     public void setUp() throws Exception {
 
         DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability("appiumVersion", "1.6.3");
+        caps.setCapability("appiumVersion", "1.6.5");
         caps.setCapability("platformName", "iOS");
-        caps.setCapability("platformVersion", "10.0");
+        caps.setCapability("platformVersion", "10.3");
         caps.setCapability("browserName", "safari");
         caps.setCapability("deviceName","iPhone Simulator");
         caps.setCapability("deviceOrientation", "portrait");
@@ -57,10 +64,13 @@ public class iOSTest implements SauceOnDemandSessionIdProvider {
         //caps.setCapability("locationServicesEnabled", true);
         //caps.setCapability("nativeWebTap", true);
         caps.setCapability("name", "iOS Test");
+        logMessage("Before creating RemoteWebDriver");
         this.driver = new RemoteWebDriver(
-                new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),
+                new URL("https://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com/wd/hub"),
                 caps);
+        logMessage("After creating RemoteWebDriver");
         this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
+        logMessage("Session ID: " + this.sessionId);
         this.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         this.driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 

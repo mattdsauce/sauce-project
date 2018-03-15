@@ -50,7 +50,7 @@ public class AndroidAppSauceTest implements SauceOnDemandSessionIdProvider {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("platformVersion", "6.0");
-        capabilities.setCapability("deviceName", "Android GoogleAPI Emulator");
+        capabilities.setCapability("deviceName", "Android Emulator");
         capabilities.setCapability("deviceOrientation","portrait");
         capabilities.setCapability("appiumVersion", "1.6.3");
         capabilities.setCapability("name", "Android Sauce App Test");

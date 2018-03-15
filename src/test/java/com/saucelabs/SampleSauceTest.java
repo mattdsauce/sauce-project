@@ -2,6 +2,7 @@ package com.saucelabs;
 
 import com.saucelabs.common.SauceOnDemandAuthentication;
 import com.saucelabs.common.SauceOnDemandSessionIdProvider;
+import com.saucelabs.watcher.MattSauceTestWatcher;
 import org.json.simple.JSONObject;
 import org.junit.After;
 import org.junit.Before;
@@ -22,6 +23,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -34,13 +36,14 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
      * supplied by environment variables or from an external file, use the no-arg {@link SauceOnDemandAuthentication} constructor.
      */
     public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(System.getenv("SAUCE_USERNAME"), System.getenv("SAUCE_ACCESS_KEY"));
-    //public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication("mattdsauce-sub2", "cc17f8ee-bb85-44cd-be25-413721dcaee1");
+    //public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication("mdunn77sub1", "e52b6e4c-2a01-4df1-a8aa-640a9c4fb4cd");
 
     /**
      * JUnit Rule which will mark the Sauce Job as passed/failed when the test succeeds or fails.
      */
     @Rule
     public SauceOnDemandTestWatcher resultReportingTestWatcher = new SauceOnDemandTestWatcher(this, authentication);
+    //public MattSauceTestWatcher resultReportingTestWatcher = new MattSauceTestWatcher(this, authentication);
 
     /**
      * Represents the browser to be used as part of the test run.
@@ -88,16 +91,22 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
     @ConcurrentParameterized.Parameters
     public static LinkedList browsersStrings() {
         LinkedList browsers = new LinkedList();
-        //browsers.add(new String[]{"macOS 10.12", "latest", "firefox"});
+        //browsers.add(new String[]{"OS X 10.11", "beta", "chrome"});
         //browsers.add(new String[]{"Windows 10", "11", "internet explorer"});
-        //browsers.add(new String[]{"Windows 10", "14", "MicrosoftEdge"});
-        //browsers.add(new String[]{"Windows 10", "50", "firefox"});
-        //browsers.add(new String[]{"windows 7", "55", "chrome"});
-        browsers.add(new String[]{"windows 8.1", "latest", "chrome"});
+        //browsers.add(new String[]{"Windows 10", "15", "MicrosoftEdge"});
+        //browsers.add(new String[]{"Windows 7", "latest", "chrome"});
+        //browsers.add(new String[]{"windows 7", "9", "internet explorer"});
+        //browsers.add(new String[]{"windows 7", "10", "internet explorer"});
         //browsers.add(new String[]{"windows 8.1", "56", "chrome"});
-        //browsers.add(new String[]{"windows 8.1", "55", "chrome"});
-        //browsers.add(new String[]{"linux", "latest", "firefox"});
-        //browsers.add(new String[]{"macOS 10.12", "10.0", "safari"});
+        browsers.add(new String[]{"windows 10", "latest", "chrome"});
+        //browsers.add(new String[]{"Windows 10", "dev", "firefox"});
+        //browsers.add(new String[]{"Windows 10", "beta", "firefox"});
+        browsers.add(new String[]{"Windows 10", "latest", "firefox"});
+        //browsers.add(new String[]{"OS X 10.11", "10.0", "safari"});
+        //browsers.add(new String[]{"Windows 10", "latest", "chrome"});
+        //browsers.add(new String[]{"OS X 10.11", "10.0", "safari"});
+        //browsers.add(new String[]{"macOS 10.12", "10.1", "safari"});
+        browsers.add(new String[]{"macOS 10.13", "latest", "safari"});
         return browsers;
     }
 
@@ -118,22 +127,26 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
             capabilities.setCapability(CapabilityType.VERSION, version);
         }
         capabilities.setCapability(CapabilityType.PLATFORM, os);
+        //capabilities.setCapability("screenResolution", "1400x1050"); // 2048x1536
+        capabilities.setCapability("extendedDebugging", true);
+        //capabilities.setCapability("chromeOptions","{\"args\":[\"disable-infobars\"]}");
         //capabilities.setCapability("javascriptEnabled",true);
-        //capabilities.setCapability("tunnelIdentifier", "mattTunnel");
-        capabilities.setCapability("seleniumVersion", "3.3.1");
+        //capabilities.setCapability("tunnelIdentifier", "matttunnel1");
+        capabilities.setCapability("seleniumVersion", "3.9.1");
         //capabilities.setCapability("iedriverVersion", "3.3.0");
-        capabilities.setCapability("chromedriverVersion", "2.29");
+        //capabilities.setCapability("chromedriverVersion", "2.35");
         //capabilities.setCapability("captureHtml",true);
-        //capabilities.setCapability("marionette", false);
+        //capabilities.setCapability("marionette", true);
         //capabilities.setCapability("avoidProxy", true);
         //capabilities.setCapability("unexpectedAlertBehaviour", "ignore");
         //capabilities.setCapability("timeZone", "London");
         //capabilities.setCapability("public", "private");
+        //capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
         capabilities.setCapability("name", "Sauce Sample Test: " + browser + " " + version + ", " + os);
-        //capabilities.setCapability("build", "testBuild");
+        capabilities.setCapability("build", "testBuild");
         //System.out.println("Before creating RemoteWebDriver: " + time_formatter.format(System.currentTimeMillis()));
         this.driver = new RemoteWebDriver(
-                new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),
+                new URL("https://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com/wd/hub"),
                 //new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@localhost:4445/wd/hub"),
                 capabilities);
         //System.out.println("After creating RemoteWebDriver: " + time_formatter.format(System.currentTimeMillis()));
@@ -142,26 +155,70 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
     }
 
     /**
-     * Runs a simple test verifying the title of the amazon.com homepage.
+     * Runs a simple test
      * @throws Exception
      */
     @Test
     public void loadpage() throws Exception {
         //System.out.println("Before driver.get: " + time_formatter.format(System.currentTimeMillis()));
-        driver.get("https://amazon.com");
+        //driver.get("http://www.bbc.co.uk/news");
+        driver.get("http://www.google.com");
         //driver.get("http://localhost:8080/examples/servlets/servlet/HelloWorldExample");
 
         //System.out.println("After driver.get: " + time_formatter.format(System.currentTimeMillis()));
 
-        List<WebElement> anchors = driver.findElements(By.tagName("a"));
-        for (WebElement anchor: anchors) {
-            System.out.println("anchor: " + anchor.getAttribute("outerHTML"));
-        }
+        //List<WebElement> anchors = driver.findElements(By.tagName("a"));
+        //for (WebElement anchor: anchors) {
+        //    System.out.println("anchor: " + anchor.getAttribute("outerHTML"));
+        //}
+
+        // click a random link on the page
+        /*int r = randInt(1, anchors.size());
+        WebElement el = anchors.get(r);
+        if (browser.equalsIgnoreCase("safari")) {
+            el.click();
+        } else if (el.isDisplayed()) {
+            try {
+                el.click();
+            } catch (Exception e) {
+                //
+            }
+        }*/
+
+        WebElement el = driver.findElement(By.name("q"));
+        el.clear();
+        el.sendKeys("rabbits");
+        el.submit();
 
         Thread.sleep(2000);
 
-        assertTrue(driver.getTitle().startsWith("Amazon"));
-        //assertTrue(driver.getTitle().startsWith("Hello"));
+        //el = driver.findElement(By.id("frog"));
+
+        assertTrue(driver.getTitle().toLowerCase().contains("google"));
+        //assertTrue(driver.getTitle().toLowerCase().contains("testing"));
+        //assertEquals("MyPageTitle", driver.getTitle());
+    }
+
+    /**
+     * Returns a psuedo-random number between min and max, inclusive.
+     * The difference between min and max can be at most
+     * <code>Integer.MAX_VALUE - 1</code>.
+     *
+     * @param min Minimim value
+     * @param max Maximim value.  Must be greater than min.
+     * @return Integer between min and max, inclusive.
+     * @see java.util.Random#nextInt(int)
+     */
+    public static int randInt(int min, int max) {
+
+        // Usually this can be a field rather than a method variable
+        Random rand = new Random();
+
+        // nextInt is normally exclusive of the top value,
+        // so add 1 to make it inclusive
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+
+        return randomNum;
     }
 
     /**

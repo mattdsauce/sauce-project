@@ -15,7 +15,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testobject.appium.junit.TestObjectAppiumSuite;
 import org.testobject.appium.junit.TestObjectAppiumSuiteWatcher;
-import org.testobject.appium.junit.TestObjectTestResultWatcher;
 import org.testobject.rest.api.appium.common.TestObject;
 
 import java.io.File;
@@ -24,7 +23,7 @@ import java.net.URL;
 import java.util.List;
 
 /* You must add these two annotations on top of your test class. */
-@TestObject(testLocally = false, testObjectApiKey = "989A940F0E6341B4BF83A9141C05F225", testObjectSuiteId = 7)
+@TestObject(testLocally = false, testObjectApiKey = "C0858D4A127F4CAC9DA37B7CB9D76260", testObjectSuiteId = 7)
 @RunWith(TestObjectAppiumSuite.class)
 public class AndroidAppMRDCSuiteTest {
 
@@ -47,7 +46,8 @@ public class AndroidAppMRDCSuiteTest {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("testobject_api_key", resultWatcher.getApiKey());
         capabilities.setCapability("testobject_test_report_id", resultWatcher.getTestReportId());
-        driver = new AndroidDriver<>(new URL("http://appium.testobject.com/wd/hub"), capabilities);
+        System.out.println("report ID: " + resultWatcher.getTestReportId());
+        driver = new AndroidDriver<>(new URL("https://eu1.appium.testobject.com/wd/hub"), capabilities);
 
         /* IMPORTANT! We need to provide the Watcher with our initialized AppiumDriver */
         resultWatcher.setRemoteWebDriver(driver);

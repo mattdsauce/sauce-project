@@ -10,14 +10,15 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.io.File;
 import java.net.URL;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -54,49 +55,38 @@ public class AndroidBrowserTest implements SauceOnDemandSessionIdProvider {
     @Before
     public void setUp() throws Exception {
 
-        String username = "harshashyama%40gmail.com";
-        String accesskey = "c3060c17-d77f-429d-896c-e9e81161aaa1";
-
         DesiredCapabilities caps = DesiredCapabilities.android();
-        //caps.setCapability("appiumVersion", "1.5.3");
-        caps.setCapability("deviceName", "Android Emulator");
+        caps.setCapability("appiumVersion", "1.7.1");
+        caps.setCapability("deviceName", "Android GoogleAPI Emulator");
         //caps.setCapability("deviceType","phone");
         caps.setCapability("deviceOrientation", "portrait");
-        caps.setCapability("browserName", "Browser");
-        caps.setCapability("platformVersion", "6.0");
+        caps.setCapability("browserName", "Chrome");
+        caps.setCapability("platformVersion", "7.1");
         caps.setCapability("platformName","Android");
         caps.setCapability("name", "Android Browser Test");
         driver = new AndroidDriver<>(
-                //new URL("https://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com/wd/hub"),
-                new URL("https://" + username + ":" + accesskey + "@ondemand.saucelabs.com/wd/hub"),
+                new URL("https://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com/wd/hub"),
                 caps);
         sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
-
-
 
 
     }
 
     /**
-     * Runs a simple test verifying the title of the google.com homepage.
+     * Runs a simple test
      * @throws Exception
      */
     @Test
     public void loadPage() throws Exception {
-        driver.get("https://google.com");
+        driver.get("http://www.bbc.co.uk/news");
 
-        // switch to NATIVE_APP context before taking screenshot
-        // String current = ((AppiumDriver)driver).getContext();
-        // ((AppiumDriver)driver).context("NATIVE_APP");
+        //List<WebElement> anchors = driver.findElements(By.tagName("a"));
 
-        // get screenshot
-        // File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        // FileUtils.copyFile(screenshot, new File("/Users/mattdunn/temp/testScreenshot.png"));
+        driver.get("http://www.bbc.co.uk/news/uk");
 
-        // switch back to previous context
-        // ((AppiumDriver)driver).context(current);
+        Thread.sleep(2000);
 
-        assertTrue(driver.getTitle().startsWith("Google"));
+        assertTrue(driver.getTitle().toLowerCase().contains("bbc"));
     }
 
     /**

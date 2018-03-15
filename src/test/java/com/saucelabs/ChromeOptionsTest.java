@@ -56,11 +56,11 @@ public class ChromeOptionsTest implements SauceOnDemandSessionIdProvider {
 
 
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("start-fullscreen");
+        options.addArguments("--no-sandbox");
         DesiredCapabilities caps = DesiredCapabilities.chrome();
         caps.setCapability(ChromeOptions.CAPABILITY, options);
         caps.setCapability("platform", "Windows 10");
-        caps.setCapability("version", "53");
+        caps.setCapability("version", "latest");
         caps.setCapability("name", "Chrome Options Test");
 
         // logging stuff

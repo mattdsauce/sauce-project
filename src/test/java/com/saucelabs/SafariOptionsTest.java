@@ -9,7 +9,9 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -18,6 +20,7 @@ import org.openqa.selenium.safari.SafariOptions;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
+import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
@@ -104,25 +107,15 @@ public class SafariOptionsTest implements SauceOnDemandSessionIdProvider {
             capabilities.setCapability(CapabilityType.VERSION, version);
         }
         capabilities.setCapability(CapabilityType.PLATFORM, os);
-        SafariOptions opts = new SafariOptions();
-        capabilities.setCapability(SafariOptions.CAPABILITY, opts);
-        //capabilities.setCapability("javascriptEnabled",true);
-        //capabilities.setCapability("tunnelIdentifier", "mattTunnel");
-        //capabilities.setCapability("seleniumVersion", "3.0.1");
-        //capabilities.setCapability("captureHtml",true);
-        //capabilities.setCapability("marionette", false);
-        //capabilities.setCapability("avoidProxy", true);
-        //capabilities.setCapability("unexpectedAlertBehaviour", "ignore");
-        //capabilities.setCapability("timeZone", "London");
-        //capabilities.setCapability("public", "private");
-        capabilities.setCapability("name", "Sauce Sample Test: " + browser + " " + version + ", " + os);
-        //capabilities.setCapability("build", "testBuild");
-        //System.out.println("Before creating RemoteWebDriver: " + time_formatter.format(System.currentTimeMillis()));
+        SafariOptions safariOptions = new SafariOptions();
+        safariOptions.setUseCleanSession(true);
+        safariOptions.setUseTechnologyPreview(true);
+        capabilities.setCapability(SafariOptions.CAPABILITY, safariOptions);
+        //capabilities.setCapability("seleniumVersion", "3.4.0");
+        capabilities.setCapability("name", "SafariOptions Test: " + browser + " " + version + ", " + os);
         this.driver = new RemoteWebDriver(
                 new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),
-                //new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@localhost:4445/wd/hub"),
                 capabilities);
-        //System.out.println("After creating RemoteWebDriver: " + time_formatter.format(System.currentTimeMillis()));
         this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
 
     }
@@ -133,21 +126,17 @@ public class SafariOptionsTest implements SauceOnDemandSessionIdProvider {
      */
     @Test
     public void loadpage() throws Exception {
-        //System.out.println("Before driver.get: " + time_formatter.format(System.currentTimeMillis()));
         driver.get("https://amazon.com");
-        //driver.get("http://localhost:8080/examples/servlets/servlet/HelloWorldExample");
 
-        //System.out.println("After driver.get: " + time_formatter.format(System.currentTimeMillis()));
-
-        //List<WebElement> anchors = driver.findElements(By.tagName("a"));
-        //for (WebElement anchor: anchors) {
-        //    System.out.println("anchor: " + anchor.getAttribute("outerHTML"));
-        //}
+        List<WebElement> anchors = driver.findElements(By.tagName("a"));
+        for (WebElement anchor: anchors) {
+            anchor.isDisplayed();
+            System.out.println("anchor: " + anchor.getAttribute("outerHTML"));
+        }
 
         Thread.sleep(2000);
 
         assertTrue(driver.getTitle().startsWith("Amazon"));
-        //assertTrue(driver.getTitle().startsWith("Hello"));
     }
 
     /**
@@ -157,7 +146,6 @@ public class SafariOptionsTest implements SauceOnDemandSessionIdProvider {
      */
     @After
     public void tearDown() throws Exception {
-        //System.out.println("Before driver.quit: " + time_formatter.format(System.currentTimeMillis()));
         driver.quit();
     }
 

@@ -105,7 +105,7 @@ public class BasicAuthTest implements SauceOnDemandSessionIdProvider {
         }
         capabilities.setCapability(CapabilityType.PLATFORM, os);
         // capabilities.setCapability(CapabilityType.PAGE_LOADING_STRATEGY, "eager");
-        capabilities.setCapability("seleniumVersion", "2.47.1");
+        //capabilities.setCapability("seleniumVersion", "2.47.1");
         capabilities.setCapability("name", "Basic Auth Test");
         this.driver = new RemoteWebDriver(
                 new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),

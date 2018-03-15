@@ -9,8 +9,12 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -18,6 +22,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.URL;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
 
 import static org.junit.Assert.assertTrue;
 
@@ -81,7 +87,7 @@ public class FirefoxProfileTest implements SauceOnDemandSessionIdProvider {
     @ConcurrentParameterized.Parameters
     public static LinkedList browsersStrings() {
         LinkedList browsers = new LinkedList();
-        browsers.add(new String[]{"OS X 10.11", "latest", "firefox"});
+        browsers.add(new String[]{"Windows 10", "latest", "firefox"});
         return browsers;
     }
 
@@ -102,37 +108,56 @@ public class FirefoxProfileTest implements SauceOnDemandSessionIdProvider {
             capabilities.setCapability(CapabilityType.VERSION, version);
         }
         capabilities.setCapability(CapabilityType.PLATFORM, os);
-        capabilities.setCapability("name", "Firefox Profile Test");
+        capabilities.setCapability("seleniumVersion","3.8.1");
+        capabilities.setCapability("name", "Firefox New Tab Test");
 
 
-        FirefoxProfile profile = new FirefoxProfile();
-        profile.setPreference("dom.max_script_run_time", "0");
-        profile.setPreference("dom.max_chrome_script_run_time", "0");
-        capabilities.setCapability(FirefoxDriver.PROFILE, profile);
+        //FirefoxProfile profile = new FirefoxProfile();
+        //FirefoxOptions options = new FirefoxOptions();
+        //options.addPreference("browser.link.open_newwindow", 3);
+        //options.addPreference("browser.link.open_newwindow.restriction", 2);
+        //capabilities.setCapability(FirefoxDriver.PROFILE, profile);
+        //capabilities.setCapability("moz:firefoxOptions", options);
+        //capabilities = options.addTo(capabilities);
 
         this.driver = new RemoteWebDriver(
-                new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),
+                new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com/wd/hub"),
                 capabilities);
         this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
 
     }
 
     /**
-     * Runs a simple test verifying the title of the amazon.com homepage.
+     * Runs a simple test
      * @throws Exception
      */
     @Test
     public void localhost() throws Exception {
-        driver.get("http://amazon.com");
+        driver.get("http://bbc.co.uk");
 
-        //List<WebElement> anchors = driver.findElements(By.tagName("a"));
+        List<WebElement> anchors = driver.findElements(By.tagName("a"));
         //for (WebElement anchor: anchors) {
         //    System.out.println("anchor: " + anchor.getAttribute("outerHTML"));
         //}
 
-        Thread.sleep(30);
+        // click a random link on the page
+        int r = randInt(1, anchors.size());
+        WebElement el = anchors.get(r);
+        if (browser.equalsIgnoreCase("safari")) {
+            el.click();
+        } else if (el.isDisplayed()) {
+            try {
+                //el.click();
+                String ctrlT = Keys.chord(Keys.CONTROL,"t");
+                el.sendKeys(ctrlT);
+            } catch (Exception e) {
+                //
+            }
+        }
 
-        assertTrue(driver.getTitle().startsWith("Amazon"));
+        Thread.sleep(5000);
+
+        assertTrue(driver.getTitle().toLowerCase().contains("bbc"));
     }
 
     /**
@@ -143,6 +168,28 @@ public class FirefoxProfileTest implements SauceOnDemandSessionIdProvider {
     @After
     public void tearDown() throws Exception {
         driver.quit();
+    }
+
+    /**
+     * Returns a psuedo-random number between min and max, inclusive.
+     * The difference between min and max can be at most
+     * <code>Integer.MAX_VALUE - 1</code>.
+     *
+     * @param min Minimim value
+     * @param max Maximim value.  Must be greater than min.
+     * @return Integer between min and max, inclusive.
+     * @see java.util.Random#nextInt(int)
+     */
+    public static int randInt(int min, int max) {
+
+        // Usually this can be a field rather than a method variable
+        Random rand = new Random();
+
+        // nextInt is normally exclusive of the top value,
+        // so add 1 to make it inclusive
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+
+        return randomNum;
     }
 
     /**

@@ -35,9 +35,13 @@ public class AndroidAppMRDCTest {
     public void setUp() throws Exception {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("testobject_api_key", "989A940F0E6341B4BF83A9141C05F225");
-        capabilities.setCapability("testobject_device", "LG_G4_real");
-        driver = new AndroidDriver<>(new URL("http://appium.testobject.com/wd/hub"), capabilities);
+        capabilities.setCapability("testobject_api_key", "366E6A2F39B94F12BB30742DE3571761"); //csteam/calculator2
+        capabilities.setCapability("testobject_device", "Samsung_Galaxy_S6_POC115");
+        //capabilities.setCapability("platformName", "Android");
+        //capabilities.setCapability("platformVersion", "6.0");
+        capabilities.setCapability("testobject_cache_device", true);
+        //capabilities.setCapability("testobject_appium_version", "1.6.4");
+        driver = new AndroidDriver<>(new URL("https://us1.appium.testobject.com/wd/hub"), capabilities);
 
         /* IMPORTANT! We need to provide the Watcher with our initialized AppiumDriver */
         resultWatcher.setRemoteWebDriver(driver);
@@ -52,7 +56,7 @@ public class AndroidAppMRDCTest {
     @Test
     public void doTest() throws InterruptedException, IOException {
 
-        WebElement el = driver.findElementByAccessibilityId("New note");
+        /*WebElement el = driver.findElementByAccessibilityId("New note");
         el.click();
 
         el = driver.findElementByClassName("android.widget.EditText");
@@ -64,11 +68,19 @@ public class AndroidAppMRDCTest {
         List<WebElement> els = driver.findElementsByClassName("android.widget.TextView");
         Assert.assertEquals(els.get(2).getText(), "This is a new note!");
 
-        els.get(2).click();
+        els.get(2).click();*/
         
         takeScreenshot("/Users/mattdunn/temp/scr1.jpg");
 
         Thread.sleep(10000);
+    }
+
+    @Test
+    public void secondTest() throws InterruptedException {
+
+        driver.getPageSource();
+        Thread.sleep(5000);
+
     }
 
 }
