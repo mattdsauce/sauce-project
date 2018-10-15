@@ -38,17 +38,21 @@ public class ApplauseAppTest {
      */
     private AppiumDriver<WebElement> driver;
 
-    private String applause_private_api_key = "C5EE825B61254454A27D4D76A9E2CEE9";
+    //private String applause_private_api_key = "84577786251A45EF979862FD56F68BC7"; // appautosvc-ms/mmde-ios
+    //private String applause_private_api_key = "0FFE8AB71BEC4797865ECB714CEA9D77"; // appautosvc-ms/mmdesede-prod
+    //private String applause_private_api_key = "9DABFA82C0A64484A2F9A93A158D73D1"; // appautosvc-ms/mediamarktde
+    //private String applause_private_api_key = "6AAFD54D2F05422D8D91C09970670E59"; // appautosvc-disney/disneylife-ios
+    private String applause_private_api_key = "A8437F1AC73B44259EC0225E1A5E312E"; // appautosvc-testobj/getyourguidenew
 
     @Before
     public void setUp() throws Exception {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("testobject_api_key", applause_private_api_key);
-        //capabilities.setCapability("testobject_device", "Samsung_Galaxy_S6_Edge_applause_us");
-        capabilities.setCapability("testobject_device", "Samsung_Galaxy_S6_real");
-        capabilities.setCapability("testobject_appium_version", "1.6.4");
-        driver = new AndroidDriver<>(new URL("https://us1.appium.testobject.com/wd/hub"), capabilities);
+        capabilities.setCapability("deviceName", "iPhone_6S_Plus_Applause");
+        //capabilities.setCapability("platformName", "iOS");
+        //capabilities.setCapability("platformVersion", "11");
+        driver = new AppiumDriver<WebElement>(new URL("https://eu1.appium.testobject.com/wd/hub"), capabilities);
 
         /* IMPORTANT! We need to provide the Watcher with our initialized AppiumDriver */
         resultWatcher.setRemoteWebDriver(driver);
@@ -61,12 +65,6 @@ public class ApplauseAppTest {
 
     @Test
     public void doTest() throws InterruptedException, IOException {
-
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.Button[@resource-id='com.android.packageinstaller:id/permission_allow_button']")));
-
-        WebElement el = driver.findElementByXPath("//android.widget.LinearLayout[@resource-id='com.android.packageinstaller:id/dialog_container']//android.widget.Button[@resource-id='com.android.packageinstaller:id/permission_allow_button']");
-        el.click();
 
         Set<String> contexts = driver.getContextHandles();
         System.out.println("Contexts: " + contexts);

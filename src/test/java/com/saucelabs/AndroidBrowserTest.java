@@ -56,16 +56,21 @@ public class AndroidBrowserTest implements SauceOnDemandSessionIdProvider {
     public void setUp() throws Exception {
 
         DesiredCapabilities caps = DesiredCapabilities.android();
-        caps.setCapability("appiumVersion", "1.7.1");
+        caps.setCapability("appiumVersion", "1.7.2");
         caps.setCapability("deviceName", "Android GoogleAPI Emulator");
         //caps.setCapability("deviceType","phone");
         caps.setCapability("deviceOrientation", "portrait");
         caps.setCapability("browserName", "Chrome");
         caps.setCapability("platformVersion", "7.1");
         caps.setCapability("platformName","Android");
+        caps.setCapability("acceptSslCerts", true);
+        //caps.setCapability("timeZone","London");
+        //caps.setCapability("language","fr");
+        //caps.setCapability("locale","fr_CA");
+        //caps.setCapability("extendedDebugging",true);
         caps.setCapability("name", "Android Browser Test");
         driver = new AndroidDriver<>(
-                new URL("https://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com/wd/hub"),
+                new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com/wd/hub"),
                 caps);
         sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
 
@@ -78,15 +83,19 @@ public class AndroidBrowserTest implements SauceOnDemandSessionIdProvider {
      */
     @Test
     public void loadPage() throws Exception {
-        driver.get("http://www.bbc.co.uk/news");
+        //driver.get("http://www.bbc.co.uk/news");
+        //driver.get("https://ecomgw-fe-user:x8gahobuw@pre-usedcar.ecom.audi");
 
         //List<WebElement> anchors = driver.findElements(By.tagName("a"));
 
         driver.get("http://www.bbc.co.uk/news/uk");
 
-        Thread.sleep(2000);
+        System.out.println(driver.manage().window().getSize());
+
+        Thread.sleep(60000);
 
         assertTrue(driver.getTitle().toLowerCase().contains("bbc"));
+        //assertTrue(driver.getTitle().toLowerCase().contains("audi"));
     }
 
     /**

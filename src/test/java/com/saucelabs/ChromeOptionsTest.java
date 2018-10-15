@@ -54,12 +54,14 @@ public class ChromeOptionsTest implements SauceOnDemandSessionIdProvider {
     @Before
     public void setUp() throws Exception {
 
-
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-browser-side-navigation, start-maximized, disable-webgl, blacklist-webgl, " +
+                "blacklist-accelerated-compositing, disable-accelerated-2d-canvas, disable-accelerated-compositing, " +
+                "disable-accelerated-layers, disable-accelerated-plugins, disable-accelerated-video, " +
+                "disable-accelerated-video-decode, disable-gpu, disable-infobars, test-type");
         DesiredCapabilities caps = DesiredCapabilities.chrome();
         caps.setCapability(ChromeOptions.CAPABILITY, options);
-        caps.setCapability("platform", "Windows 10");
+        caps.setCapability("platform", "macOS 10.13");
         caps.setCapability("version", "latest");
         caps.setCapability("name", "Chrome Options Test");
 
@@ -69,7 +71,7 @@ public class ChromeOptionsTest implements SauceOnDemandSessionIdProvider {
         caps.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
 
         driver = new RemoteWebDriver(
-                new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),
+                new URL("https://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com/wd/hub"),
                 caps);
         sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
 

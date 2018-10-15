@@ -40,19 +40,19 @@ public class iOSMRDCSCTest {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("testobject_api_key", "35984A06E3D747BA817DD3F5EB894A2E"); // csteam/amazon
         //capabilities.setCapability("testobject_api_key", "4BC9B5A340BB456A96C238CDA92283BC"); // gamesys-scp-pov/google
-        //capabilities.setCapability("testobject_device", "iPhone_SE_10_2_POC101");
+        capabilities.setCapability("testobject_device", "iPhone_SE_10_2_POC108");
         //capabilities.setCapability("testobject_appium_version", "1.6.5");
         capabilities.setCapability("autoDismissAlerts", true);
-        capabilities.setCapability("platformName", "iOS");
+        //capabilities.setCapability("platformName", "iOS");
         //capabilities.setCapability("deviceName", "iPhone SE");
-        capabilities.setCapability("platformVersion", "10");
+        //capabilities.setCapability("platformVersion", "10");
         //capabilities.setCapability("privateDevicesOnly", true);
-        capabilities.setCapability("tunnelIdentifier", "mdtunnel1");
+        capabilities.setCapability("tunnelIdentifier", "mdtest1");
         capabilities.setCapability("name", "Test with Sauce Connect");
         //capabilities.setCapability("browserName", "safari");
         //capabilities.setCapability("deviceOrientation", "portrait");
         capabilities.setCapability("automationName", "XCUITest");
-        driver = new AppiumDriver(new URL("https://eu1.appium.testobject.com/wd/hub"), capabilities);
+        driver = new AppiumDriver(new URL("https://us1.appium.testobject.com/wd/hub"), capabilities);
         driver.manage().timeouts().pageLoadTimeout(130000, TimeUnit.MILLISECONDS);
         driver.manage().timeouts().setScriptTimeout(130000, TimeUnit.MILLISECONDS);
 

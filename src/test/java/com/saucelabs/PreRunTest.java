@@ -54,22 +54,21 @@ public class PreRunTest implements SauceOnDemandSessionIdProvider {
 
 
         DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability("platform", "OS X 10.11");
+        caps.setCapability("platform", "Windows 10");
         caps.setCapability("browserName", "chrome");
         caps.setCapability("version", "latest");
+        caps.setCapability("extendedDebugging", true);
         caps.setCapability("name", "PreRun Executable Test");
 
         HashMap<String,Object> prerun = new HashMap<String,Object>();
-        prerun.put("executable","sauce-storage:prerun.sh");
-        //prerun.put("executable","https://gist.githubusercontent.com/saucyallison/3a73a4e0736e556c990d/raw/d26b0195d48b404628fc12342cb97f1fc5ff58ec/disable_fraud.sh");
+        prerun.put("executable","sauce-storage:sauce_file_seed_windows_v.exe");
         prerun.put("background",false);
         prerun.put("timeout","120");
-
 
         caps.setCapability("prerun", prerun);
 
         driver = new RemoteWebDriver(
-                new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),
+                new URL("https://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com/wd/hub"),
                 caps);
         sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
     }
@@ -80,8 +79,8 @@ public class PreRunTest implements SauceOnDemandSessionIdProvider {
      */
     @Test
     public void doTest() throws Exception {
-        driver.get("http://admin.softwareadvice.com");
-        Thread.sleep(30000);
+        driver.get("https://saucelabs.com");
+        Thread.sleep(5000);
         assertTrue(driver.getTitle().contains("Sauce"));
     }
 

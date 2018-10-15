@@ -7,14 +7,18 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ScreenOrientation;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.html5.Location;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testobject.appium.junit.TestObjectTestResultWatcher;
 
 import java.net.URL;
 
+import static org.junit.Assert.assertNotNull;
+
 public class BPiOSAppTOTest {
 
-    private AppiumDriver driver;
+    private AppiumDriver<WebElement> driver;
 
     /* Takes care of sending the result of the tests over to TestObject. */
     @Rule
@@ -29,11 +33,13 @@ public class BPiOSAppTOTest {
     @Before
     public void setUp() throws Exception {
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("testobject_api_key", "1C15A8A20CB6432AA924759F4B1D0CAA");
-        capabilities.setCapability("testobject_device", "iPhone_5_16GB_real");
+        capabilities.setCapability("testobject_api_key", "76809733F84748CC98B1CC330CCFE376");
+        //capabilities.setCapability("testobject_device", "iPhone_5_16GB_real");
         //capabilities.setCapability("testobject_device", "iPhone_7_32GB_10_real");
         //capabilities.setCapability("testobject_appium_version", "1.6.4");
-        //capabilities.setCapability("automationName", "XCUITest");
+        capabilities.setCapability("automationName", "XCUITest");
+        capabilities.setCapability("platformName","iOS");
+        capabilities.setCapability("platformVersion","11");
         //capabilities.setCapability("deviceOrientation", "landscape");
 
         driver = new IOSDriver(new URL("http://eu1.appium.testobject.com/wd/hub"), capabilities);
@@ -50,6 +56,12 @@ public class BPiOSAppTOTest {
 
     @Test
     public void testMethod() throws Exception {
+
+        Location location = new Location(53.798655, -1.5, 0);
+        driver.setLocation(location);
+
+        String elemText = driver.findElementsByClassName("UIAStaticText").get(0).getText();
+        assertNotNull(elemText);
 
         Thread.sleep(5000);
 

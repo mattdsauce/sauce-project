@@ -40,17 +40,18 @@ public class iOSWebMRDCTest {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("testobject_api_key", "35984A06E3D747BA817DD3F5EB894A2E"); // csteam/amazon
-        //capabilities.setCapability("testobject_api_key", "791EA53D19B1465C81F767C5E22E0733"); // testobject/amazon
-        capabilities.setCapability("testobject_device", "iPhone_6S_Plus_real");
-        //capabilities.setCapability("testobject_appium_version", "1.6.5");
-        capabilities.setCapability("autoDismissAlerts", true);
-        //capabilities.setCapability("platformName", "iOS");
-        //capabilities.setCapability("platformVersion", "11.2.6");
+        //capabilities.setCapability("testobject_api_key", "F870C979D57E4A79B3E3D8D40BF45FAC"); //appautosvc-testobj/sauce
+        //capabilities.setCapability("deviceName", "iPhone_6S_Plus_11_applause");
+        //capabilities.setCapability("testobject_appium_version", "1.8.1");
+        //capabilities.setCapability("autoDismissAlerts", true);
+        capabilities.setCapability("platformName", "iOS");
+        capabilities.setCapability("platformVersion", "11");
+        capabilities.setCapability("tabletOnly", true);
         //capabilities.setCapability("tunnelIdentifier", "mdtunnel");
         //capabilities.setCapability("browserName", "safari");
-        //capabilities.setCapability("deviceOrientation", "portrait");
-        capabilities.setCapability("automationName", "XCUITest");
-        driver = new IOSDriver(new URL("http://eu1.appium.testobject.com/wd/hub"), capabilities);
+        //capabilities.setCapability("orientation", "PORTRAIT");
+        //capabilities.setCapability("automationName", "XCUITest");
+        driver = new IOSDriver(new URL("https://us1.appium.testobject.com/wd/hub"), capabilities);
         driver.manage().timeouts().pageLoadTimeout(130000, TimeUnit.MILLISECONDS);
         driver.manage().timeouts().setScriptTimeout(130000, TimeUnit.MILLISECONDS);
 
@@ -67,10 +68,10 @@ public class iOSWebMRDCTest {
 
         Thread.sleep(2000);
 
-        driver.get("https://google.com");
+        driver.get("https://saucelabs.com");
 
-        Thread.sleep(5000);
-        assertTrue(driver.getTitle().toLowerCase().contains("google"));
+        Thread.sleep(30000);
+        assertTrue(driver.getTitle().toLowerCase().contains("sauce"));
 
     }
 

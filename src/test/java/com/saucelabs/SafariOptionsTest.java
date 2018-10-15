@@ -108,7 +108,7 @@ public class SafariOptionsTest implements SauceOnDemandSessionIdProvider {
         }
         capabilities.setCapability(CapabilityType.PLATFORM, os);
         SafariOptions safariOptions = new SafariOptions();
-        safariOptions.setUseCleanSession(true);
+        //safariOptions.setUseCleanSession(true);
         safariOptions.setUseTechnologyPreview(true);
         capabilities.setCapability(SafariOptions.CAPABILITY, safariOptions);
         //capabilities.setCapability("seleniumVersion", "3.4.0");

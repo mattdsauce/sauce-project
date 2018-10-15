@@ -3,43 +3,46 @@ package com.saucelabs;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.util.HashMap;
+
 public class LocalChromeTest {
 
     @Test
-    public void testPaste() throws InterruptedException {
+    public void testChrome() throws InterruptedException {
         ChromeOptions opts = new ChromeOptions();
-        opts.addArguments("enable-logging", "v=4", "start-fullscreen");
+
+        HashMap<String, String> mobileEmulation = new HashMap<>();
+        mobileEmulation.put("deviceName", "iPhone 8");
+        opts.setExperimentalOption("mobileEmulation", mobileEmulation);
+
+        opts.addArguments("start-maximized",
+                "disable-webgl",
+                "blacklist-webgl",
+                "blacklist-accelerated-compositing",
+                "disable-accelerated-2d-canvas",
+                "disable-accelerated-compositing",
+                "disable-accelerated-layers",
+                "disable-accelerated-plugins",
+                "disable-accelerated-video",
+                "disable-accelerated-video-decode",
+                "disable-gpu",
+                "disable-infobars",
+                "test-type");
         WebDriver chrome = new ChromeDriver(opts);
-        chrome.get("https://www.adobe.com/software/flash/about/");
 
-        //Thread.sleep(3000);
-        //chrome.get("http://www.google.com");
-        //WebElement element = chrome.findElement(By.name("q"));
+        chrome.get("https://cleanandclear.com/");
 
-        //element.sendKeys("some text");
-        //Thread.sleep(3000);
+        Thread.sleep(2000);
 
-        //element.sendKeys(Keys.COMMAND + "a");
-        //element.sendKeys(Keys.COMMAND + "c");
-        //element.clear();
-        //Thread.sleep(3000);
+        WebElement el = chrome.findElement(By.cssSelector("#touch-menu"));
+        el.click();
 
-        //element.sendKeys(Keys.COMMAND + "v");
-        //element.sendKeys(Keys.COMMAND + "v");
-        //Thread.sleep(3000);
-
-        //element.sendKeys("abc");
-
-        Thread.sleep(3000);
-        chrome.get("file:///Users/mattdunn/chrome_debug.log");
         Thread.sleep(30000);
-
 
         chrome.close();
     }

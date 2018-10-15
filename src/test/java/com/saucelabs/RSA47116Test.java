@@ -9,10 +9,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchWindowException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -88,7 +85,7 @@ public class RSA47116Test implements SauceOnDemandSessionIdProvider {
     @ConcurrentParameterized.Parameters
     public static LinkedList browsersStrings() {
         LinkedList browsers = new LinkedList();
-        browsers.add(new String[]{"Windows 10", "57", "firefox"});
+        browsers.add(new String[]{"Windows 10", "11", "internet explorer"});
         return browsers;
     }
 
@@ -109,10 +106,16 @@ public class RSA47116Test implements SauceOnDemandSessionIdProvider {
             capabilities.setCapability(CapabilityType.VERSION, version);
         }
         capabilities.setCapability(CapabilityType.PLATFORM, os);
-        capabilities.setCapability("screenResolution","1920x1080");
-        capabilities.setCapability("seleniumVersion", "3.5.0");
+        MutableCapabilities sauceCaps = new MutableCapabilities();
+        sauceCaps.setCapability("seleniumVersion", "3.11.0");
+        sauceCaps.setCapability("name", "RSA 47116 Test: " + browser + " " + version + ", " + os);
+        sauceCaps.setCapability("screenResolution","1920x1080");
+        sauceCaps.setCapability("iedriverVersion", "3.11.0");
+        capabilities.setCapability("sauce:options", sauceCaps);
+        //capabilities.setCapability("screenResolution","1920x1080");
+        //capabilities.setCapability("seleniumVersion", "3.8.0");
         //capabilities.setCapability("iedriverVersion", "3.8.0");
-        capabilities.setCapability("name", "RSA 47116 Test: " + browser + " " + version + ", " + os);
+        //capabilities.setCapability("name", "RSA 47116 Test: " + browser + " " + version + ", " + os);
         //capabilities.setCapability("build", "testBuild");
         //System.out.println("Before creating RemoteWebDriver: " + time_formatter.format(System.currentTimeMillis()));
         this.driver = new RemoteWebDriver(

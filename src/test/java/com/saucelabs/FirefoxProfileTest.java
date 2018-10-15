@@ -112,13 +112,15 @@ public class FirefoxProfileTest implements SauceOnDemandSessionIdProvider {
         capabilities.setCapability("name", "Firefox New Tab Test");
 
 
-        //FirefoxProfile profile = new FirefoxProfile();
+        FirefoxProfile profile = new FirefoxProfile();
         //FirefoxOptions options = new FirefoxOptions();
-        //options.addPreference("browser.link.open_newwindow", 3);
+        profile.setPreference("dom.disable_open_during_load", false);
         //options.addPreference("browser.link.open_newwindow.restriction", 2);
-        //capabilities.setCapability(FirefoxDriver.PROFILE, profile);
+        capabilities.setCapability(FirefoxDriver.PROFILE, profile);
         //capabilities.setCapability("moz:firefoxOptions", options);
         //capabilities = options.addTo(capabilities);
+
+        capabilities.setCapability("extendedDebugging", true);
 
         this.driver = new RemoteWebDriver(
                 new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com/wd/hub"),

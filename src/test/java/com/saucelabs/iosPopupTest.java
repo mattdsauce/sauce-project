@@ -52,21 +52,22 @@ public class iosPopupTest implements SauceOnDemandSessionIdProvider {
     public void setUp() throws Exception {
 
         DesiredCapabilities caps = DesiredCapabilities.iphone();
-        //caps.setCapability("appiumVersion", "1.6.4");
+        caps.setCapability("appiumVersion", "1.7.2");
         caps.setCapability("commandTimeout", "300");
         caps.setCapability("safariIgnoreFraudWarning", "true");
         //caps.setCapability("idleTimeout", "360");
         caps.setCapability("name", "iOS Popup Test");
+        caps.setCapability("nativeWebTap", true);
         caps.setCapability("safariAllowPopups", "true");
         caps.setCapability("autoAcceptAlerts", "true");
         caps.setCapability("deviceName", "iPhone Simulator");
         caps.setCapability("deviceOrientation", "portrait");
         caps.setCapability("automationName", "XCUITest");
-        caps.setCapability("platformVersion", "10.3");
+        caps.setCapability("platformVersion", "11.2");
         caps.setCapability("platformName", "iOS");
         caps.setCapability("browserName", "Safari");
         this.driver = new RemoteWebDriver(
-                new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"), caps);
+                new URL("https://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com/wd/hub"), caps);
         //driver = new IOSDriver<WebElement>(new URL("http://localhost:4723/wd/hub"), caps);
         this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
         this.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -82,7 +83,7 @@ public class iosPopupTest implements SauceOnDemandSessionIdProvider {
     @Test
     public void testBBC() throws Exception {
 
-        driver.get("http://m.bbc.com/sport/rugby-league/39829001");
+        driver.get("http://www.bbc.com/sport/rugby-league/39829001");
         driver.findElement(By.xpath("//*[@id='sb-1']/span[1]/i")).click();
         driver.findElement(By.xpath("//*[@id='sb-1-panel']/ul/li[2]/a")).click();
         //WebDriverWait wait = new WebDriverWait(driver, 2);
@@ -94,12 +95,6 @@ public class iosPopupTest implements SauceOnDemandSessionIdProvider {
 
     }
 
-
-
-    private void takeScreenshot(String path) throws IOException {
-        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile, new File(path));
-    }
 
     /**
      * Closes the {@link WebDriver} session.

@@ -77,9 +77,10 @@ public class iOSAppTest implements SauceOnDemandSessionIdProvider {
         capabilities.setCapability("appiumVersion", "1.6.3");
         capabilities.setCapability("autoAcceptAlerts", "true");
         capabilities.setCapability("name", "iOS App Test");
-        capabilities.setCapability("app", "https://s3-us-west-1.amazonaws.com/scarebnbdev/ShiptShopper.zip");
+        //capabilities.setCapability("app", "https://s3-us-west-1.amazonaws.com/scarebnbdev/ShiptShopper.zip");
+        capabilities.setCapability("app","sauce-storage:chasePayCustomIOS.zip");
 
-        driver = new IOSDriver<WebElement>(new URL(MessageFormat.format("http://{0}:{1}@ondemand.saucelabs.com:80/wd/hub", sauceUserName, sauceAccessKey)),
+        driver = new IOSDriver<WebElement>(new URL(MessageFormat.format("https://{0}:{1}@ondemand.saucelabs.com/wd/hub", sauceUserName, sauceAccessKey)),
                 capabilities);
         this.sessionId = driver.getSessionId().toString();
         values = new ArrayList<Integer>();

@@ -3,15 +3,14 @@ package com.saucelabs;
 import com.saucelabs.common.SauceOnDemandAuthentication;
 import com.saucelabs.common.SauceOnDemandSessionIdProvider;
 import com.saucelabs.watcher.MattSauceTestWatcher;
+import org.apache.commons.io.FileUtils;
 import org.json.simple.JSONObject;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -19,6 +18,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import com.saucelabs.junit.ConcurrentParameterized;
 import com.saucelabs.junit.SauceOnDemandTestWatcher;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
@@ -36,7 +37,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
      * supplied by environment variables or from an external file, use the no-arg {@link SauceOnDemandAuthentication} constructor.
      */
     public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(System.getenv("SAUCE_USERNAME"), System.getenv("SAUCE_ACCESS_KEY"));
-    //public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication("mdunn77sub1", "e52b6e4c-2a01-4df1-a8aa-640a9c4fb4cd");
+    //public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication("mattd-sub5a", "c43bfbd4-4423-4dc5-b025-c705521d72a2");
 
     /**
      * JUnit Rule which will mark the Sauce Job as passed/failed when the test succeeds or fails.
@@ -92,20 +93,8 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
     public static LinkedList browsersStrings() {
         LinkedList browsers = new LinkedList();
         //browsers.add(new String[]{"OS X 10.11", "beta", "chrome"});
-        //browsers.add(new String[]{"Windows 10", "11", "internet explorer"});
-        //browsers.add(new String[]{"Windows 10", "15", "MicrosoftEdge"});
-        //browsers.add(new String[]{"Windows 7", "latest", "chrome"});
-        //browsers.add(new String[]{"windows 7", "9", "internet explorer"});
-        //browsers.add(new String[]{"windows 7", "10", "internet explorer"});
-        //browsers.add(new String[]{"windows 8.1", "56", "chrome"});
-        browsers.add(new String[]{"windows 10", "latest", "chrome"});
-        //browsers.add(new String[]{"Windows 10", "dev", "firefox"});
-        //browsers.add(new String[]{"Windows 10", "beta", "firefox"});
-        browsers.add(new String[]{"Windows 10", "latest", "firefox"});
-        //browsers.add(new String[]{"OS X 10.11", "10.0", "safari"});
-        //browsers.add(new String[]{"Windows 10", "latest", "chrome"});
-        //browsers.add(new String[]{"OS X 10.11", "10.0", "safari"});
-        //browsers.add(new String[]{"macOS 10.12", "10.1", "safari"});
+        //browsers.add(new String[]{"Windows 7", "11", "internet explorer"});
+        //browsers.add(new String[]{"macOS 10.12", "latest", "chrome"});
         browsers.add(new String[]{"macOS 10.13", "latest", "safari"});
         return browsers;
     }
@@ -127,23 +116,25 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
             capabilities.setCapability(CapabilityType.VERSION, version);
         }
         capabilities.setCapability(CapabilityType.PLATFORM, os);
-        //capabilities.setCapability("screenResolution", "1400x1050"); // 2048x1536
-        capabilities.setCapability("extendedDebugging", true);
+        //capabilities.setCapability("screenResolution", "1920x1080");
+        //capabilities.setCapability("extendedDebugging", true);
         //capabilities.setCapability("chromeOptions","{\"args\":[\"disable-infobars\"]}");
         //capabilities.setCapability("javascriptEnabled",true);
         //capabilities.setCapability("tunnelIdentifier", "matttunnel1");
-        capabilities.setCapability("seleniumVersion", "3.9.1");
-        //capabilities.setCapability("iedriverVersion", "3.3.0");
+        capabilities.setCapability("seleniumVersion", "3.14.0");
+        //capabilities.setCapability("iedriverVersion", "3.12.0");
         //capabilities.setCapability("chromedriverVersion", "2.35");
         //capabilities.setCapability("captureHtml",true);
         //capabilities.setCapability("marionette", true);
         //capabilities.setCapability("avoidProxy", true);
         //capabilities.setCapability("unexpectedAlertBehaviour", "ignore");
-        //capabilities.setCapability("timeZone", "London");
+        //capabilities.setCapability("timeZone", "Chicago");
         //capabilities.setCapability("public", "private");
+        //capabilities.setCapability("prerun","sauce-storage:sauce_file_seed.sh");
         //capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+        //capabilities.setCapability("_recordMp4",true);
         capabilities.setCapability("name", "Sauce Sample Test: " + browser + " " + version + ", " + os);
-        capabilities.setCapability("build", "testBuild");
+        //capabilities.setCapability("build", "testBuild");
         //System.out.println("Before creating RemoteWebDriver: " + time_formatter.format(System.currentTimeMillis()));
         this.driver = new RemoteWebDriver(
                 new URL("https://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com/wd/hub"),
@@ -161,8 +152,8 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
     @Test
     public void loadpage() throws Exception {
         //System.out.println("Before driver.get: " + time_formatter.format(System.currentTimeMillis()));
-        //driver.get("http://www.bbc.co.uk/news");
-        driver.get("http://www.google.com");
+        driver.get("http://saucelabs.com");
+        //driver.get("http://www.google.com");
         //driver.get("http://localhost:8080/examples/servlets/servlet/HelloWorldExample");
 
         //System.out.println("After driver.get: " + time_formatter.format(System.currentTimeMillis()));
@@ -172,31 +163,54 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
         //    System.out.println("anchor: " + anchor.getAttribute("outerHTML"));
         //}
 
-        // click a random link on the page
-        /*int r = randInt(1, anchors.size());
-        WebElement el = anchors.get(r);
-        if (browser.equalsIgnoreCase("safari")) {
-            el.click();
-        } else if (el.isDisplayed()) {
-            try {
-                el.click();
-            } catch (Exception e) {
-                //
-            }
-        }*/
+        Thread.sleep(2000);
 
-        WebElement el = driver.findElement(By.name("q"));
+        //takeScreenshot("/Users/mattdunn/temp/scr1.png");
+
+        // click a random link on the page
+//        int r = randInt(1, anchors.size());
+//        WebElement el = anchors.get(r);
+//        if (browser.equalsIgnoreCase("safari")) {
+//            el.click();
+//        } else if (el.isDisplayed()) {
+//            try {
+//                el.click();
+//            } catch (Exception e) {
+//                //
+//            }
+//        }
+
+        //anchors = driver.findElements(By.tagName("a"));
+
+        /*WebElement el = driver.findElement(By.name("q"));
         el.clear();
         el.sendKeys("rabbits");
-        el.submit();
+        el.submit();*/
 
-        Thread.sleep(2000);
+        //WebElement el = driver.findElement(By.cssSelector("#mediaroomIcon"));
+
+        /*WebElement el = driver.findElement(By.cssSelector("._2r81:nth-child(2) ._16Ez"));
+        el.click();
+
+        el = driver.findElement(By.cssSelector("._3RzH"));
+        el.click();
+
+        el = driver.findElement(By.cssSelector("._2cH1"));
+        el.sendKeys("appium");
+        el.submit();*/
+
+        Thread.sleep(5000);
 
         //el = driver.findElement(By.id("frog"));
 
-        assertTrue(driver.getTitle().toLowerCase().contains("google"));
-        //assertTrue(driver.getTitle().toLowerCase().contains("testing"));
+        //assertTrue(driver.getTitle().toLowerCase().contains("google"));
+        assertTrue(driver.getTitle().toLowerCase().contains("sauce"));
         //assertEquals("MyPageTitle", driver.getTitle());
+    }
+
+    private void takeScreenshot(String path) throws IOException {
+        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(scrFile, new File(path));
     }
 
     /**

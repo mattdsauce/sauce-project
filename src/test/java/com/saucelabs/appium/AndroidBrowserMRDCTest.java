@@ -34,25 +34,26 @@ public class AndroidBrowserMRDCTest {
     /**
      * The {@link WebDriver} instance which is used to perform browser interactions with.
      */
-    private AppiumDriver<WebElement> driver;
+    private AppiumDriver driver;
 
     @Before
     public void setUp() throws Exception {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("testobject_api_key", "35984A06E3D747BA817DD3F5EB894A2E"); // csteam/amazon
+        //capabilities.setCapability("testobject_api_key", "35984A06E3D747BA817DD3F5EB894A2E"); // csteam/amazon
+        capabilities.setCapability("testobject_api_key", "2077678232ED4F1FA54D1A32D59BC091"); // albefree/google
+        //capabilities.setCapability("testobject_api_key", "DB48D27EEC8E4CFDA9A8EB80E7127623"); // mattdsauce-sub2/saucelabs
         capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("platformVersion", "7.1");
-        capabilities.setCapability("testobject_appium_version", "1.7.1");
-        driver = new AndroidDriver<>(new URL("http://eu1.appium.testobject.com/wd/hub"), capabilities);
+        capabilities.setCapability("platformVersion", "9");
+        driver = new AppiumDriver(new URL("http://us1.appium.testobject.com/wd/hub"), capabilities);
 
         /* IMPORTANT! We need to provide the Watcher with our initialized AppiumDriver */
         resultWatcher.setRemoteWebDriver(driver);
 
-        Capabilities gotCaps = ((RemoteWebDriver) driver).getCapabilities();
+        /*Capabilities gotCaps = ((RemoteWebDriver) driver).getCapabilities();
         Map desired = (Map)gotCaps.asMap().get("desired");
         String device = (String)desired.get("deviceName");
-        System.out.println("device = " + device);
+        System.out.println("device = " + device);*/
     }
 
 
@@ -62,15 +63,15 @@ public class AndroidBrowserMRDCTest {
      */
     @Test
     public void loadPage() throws Exception {
-        driver.get("http://www.bbc.co.uk/news");
+        driver.get("http://saucelabs.com");
 
-        //List<WebElement> anchors = driver.findElements(By.tagName("a"));
+        List<WebElement> anchors = driver.findElements(By.tagName("a"));
 
-        driver.get("http://www.bbc.co.uk/news/uk");
+        //driver.get("http://www.bbc.co.uk/news/uk");
 
-        Thread.sleep(2000);
+        Thread.sleep(20000);
 
-        assertTrue(driver.getTitle().toLowerCase().contains("bbc"));
+        assertTrue(driver.getTitle().toLowerCase().contains("sauce"));
     }
 
 }

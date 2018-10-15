@@ -9,6 +9,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,7 +24,8 @@ import java.net.URL;
 import java.util.List;
 
 /* You must add these two annotations on top of your test class. */
-@TestObject(testLocally = false, testObjectApiKey = "C0858D4A127F4CAC9DA37B7CB9D76260", testObjectSuiteId = 7)
+//@TestObject(testLocally = false, testObjectApiKey = "C0858D4A127F4CAC9DA37B7CB9D76260", testObjectSuiteId = 7)
+@TestObject(testLocally = false, testObjectApiKey = "CEEB1FFBBCE74B3FB59FFB916805F12B", testObjectSuiteId = 7) // neerusqa/crcl/appium/suites
 @RunWith(TestObjectAppiumSuite.class)
 public class AndroidAppMRDCSuiteTest {
 
@@ -47,7 +49,7 @@ public class AndroidAppMRDCSuiteTest {
         capabilities.setCapability("testobject_api_key", resultWatcher.getApiKey());
         capabilities.setCapability("testobject_test_report_id", resultWatcher.getTestReportId());
         System.out.println("report ID: " + resultWatcher.getTestReportId());
-        driver = new AndroidDriver<>(new URL("https://eu1.appium.testobject.com/wd/hub"), capabilities);
+        driver = new AndroidDriver<>(new URL("https://us1.appium.testobject.com/wd/hub"), capabilities);
 
         /* IMPORTANT! We need to provide the Watcher with our initialized AppiumDriver */
         resultWatcher.setRemoteWebDriver(driver);
@@ -62,7 +64,13 @@ public class AndroidAppMRDCSuiteTest {
     @Test
     public void doTest() throws InterruptedException, IOException {
 
-        WebElement el = driver.findElementByAccessibilityId("New note");
+        Thread.sleep(10000);
+
+        driver.findElement(By.id("com.crcl.android:id/emailEdt")).sendKeys("lee@gmail.com");
+        driver.findElement(By.id("com.crcl.android:id/passwordEdt")).sendKeys("123456");
+        driver.findElement(By.id("com.crcl.android:id/loginBtn")).click();
+
+        /*WebElement el = driver.findElementByAccessibilityId("New note");
         el.click();
 
         el = driver.findElementByClassName("android.widget.EditText");
@@ -76,7 +84,7 @@ public class AndroidAppMRDCSuiteTest {
 
         els.get(2).click();
         
-        takeScreenshot("/Users/mattdunn/temp/scr1.jpg");
+        takeScreenshot("/Users/mattdunn/temp/scr1.jpg");*/
 
         Thread.sleep(10000);
     }
