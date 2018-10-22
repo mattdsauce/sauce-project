@@ -94,8 +94,11 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
         LinkedList browsers = new LinkedList();
         //browsers.add(new String[]{"OS X 10.11", "beta", "chrome"});
         //browsers.add(new String[]{"Windows 7", "11", "internet explorer"});
+        browsers.add(new String[]{"Windows 10", "latest", "chrome"});
+        //browsers.add(new String[]{"Windows 10", "latest-1", "chrome"});
+        //browsers.add(new String[]{"Windows 10", "latest", "firefox"});
         //browsers.add(new String[]{"macOS 10.12", "latest", "chrome"});
-        browsers.add(new String[]{"macOS 10.13", "latest", "safari"});
+        //browsers.add(new String[]{"macOS 10.13", "latest", "safari"});
         return browsers;
     }
 
@@ -115,13 +118,13 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
         if (version != null) {
             capabilities.setCapability(CapabilityType.VERSION, version);
         }
-        capabilities.setCapability(CapabilityType.PLATFORM, os);
+        //capabilities.setCapability(CapabilityType.PLATFORM, os);
         //capabilities.setCapability("screenResolution", "1920x1080");
         //capabilities.setCapability("extendedDebugging", true);
         //capabilities.setCapability("chromeOptions","{\"args\":[\"disable-infobars\"]}");
         //capabilities.setCapability("javascriptEnabled",true);
         //capabilities.setCapability("tunnelIdentifier", "matttunnel1");
-        capabilities.setCapability("seleniumVersion", "3.14.0");
+        //capabilities.setCapability("seleniumVersion", "3.14.0");
         //capabilities.setCapability("iedriverVersion", "3.12.0");
         //capabilities.setCapability("chromedriverVersion", "2.35");
         //capabilities.setCapability("captureHtml",true);
@@ -130,6 +133,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
         //capabilities.setCapability("unexpectedAlertBehaviour", "ignore");
         //capabilities.setCapability("timeZone", "Chicago");
         //capabilities.setCapability("public", "private");
+        //capabilities.setCapability("applicationCacheEnabled", false);
         //capabilities.setCapability("prerun","sauce-storage:sauce_file_seed.sh");
         //capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
         //capabilities.setCapability("_recordMp4",true);
@@ -152,8 +156,9 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
     @Test
     public void loadpage() throws Exception {
         //System.out.println("Before driver.get: " + time_formatter.format(System.currentTimeMillis()));
-        driver.get("http://saucelabs.com");
-        //driver.get("http://www.google.com");
+        //driver.get("http://saucelabs.com");
+        driver.get("http://www.google.com");
+        //driver.get("https://www.dell.com/fr-fr/shop/deals/?scrub=s1683d");
         //driver.get("http://localhost:8080/examples/servlets/servlet/HelloWorldExample");
 
         //System.out.println("After driver.get: " + time_formatter.format(System.currentTimeMillis()));
@@ -182,10 +187,10 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
 
         //anchors = driver.findElements(By.tagName("a"));
 
-        /*WebElement el = driver.findElement(By.name("q"));
+        WebElement el = driver.findElement(By.name("q"));
         el.clear();
         el.sendKeys("rabbits");
-        el.submit();*/
+        el.submit();
 
         //WebElement el = driver.findElement(By.cssSelector("#mediaroomIcon"));
 
@@ -199,12 +204,12 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
         el.sendKeys("appium");
         el.submit();*/
 
-        Thread.sleep(5000);
+        Thread.sleep(2000);
 
         //el = driver.findElement(By.id("frog"));
 
         //assertTrue(driver.getTitle().toLowerCase().contains("google"));
-        assertTrue(driver.getTitle().toLowerCase().contains("sauce"));
+        //assertTrue(driver.getTitle().toLowerCase().contains("sauce"));
         //assertEquals("MyPageTitle", driver.getTitle());
     }
 
@@ -242,6 +247,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
      */
     @After
     public void tearDown() throws Exception {
+        printSessionId();
         //System.out.println("Before driver.quit: " + time_formatter.format(System.currentTimeMillis()));
         driver.quit();
     }
@@ -254,4 +260,14 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
     public String getSessionId() {
         return sessionId;
     }
+
+
+    private void printSessionId() {
+
+        String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s",
+                (((RemoteWebDriver) driver).getSessionId()).toString(), "some job name");
+        System.out.println(message);
+    }
+
+
 }
