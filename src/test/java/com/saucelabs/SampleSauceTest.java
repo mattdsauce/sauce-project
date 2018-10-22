@@ -247,7 +247,6 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
      */
     @After
     public void tearDown() throws Exception {
-        printSessionId();
         //System.out.println("Before driver.quit: " + time_formatter.format(System.currentTimeMillis()));
         driver.quit();
     }
@@ -261,13 +260,6 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
         return sessionId;
     }
 
-
-    private void printSessionId() {
-
-        String message = String.format("SauceOnDemandSessionID=%1$s job-name=%2$s",
-                (((RemoteWebDriver) driver).getSessionId()).toString(), "some job name");
-        System.out.println(message);
-    }
 
 
 }
